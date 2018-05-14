@@ -3,13 +3,13 @@
 # import -- source libraries in C like way
 #
 # copyright (c) 2018 Cj-bc
-# 
+#
 # usage: import <library>
 
 function import {
 
   local lib_path="/usr/local/lib"
-#  local lib_path=`blib config path`
+#  local lib_path=`blib libpath`
   local lib_name=($@)
 
   local ERROR_NOTINSTALLED=("2" "library is not installed")
