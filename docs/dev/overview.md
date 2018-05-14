@@ -4,11 +4,13 @@
 # feature
 
 Commands:
-  * 'import' command  -- import given library more easier.
+  * 'import', 'using', 'include' command  -- import given library more easier.
   * `blib install <lib_name>` -- install <lib_name>
   * `blib uninstall <lib_name>` -- uninstall <lib_name>
   * `blib list` -- show all installed libraries
-  * `blib show <lib>` -- show library infomation
+  * `blib info <lib>` -- show library infomation
+  * `blib man <lib>` -- show details about <lib>
+  * `blib libpath` -- output libraries path
 
 Supports:
   * bash-completion for `blib`
