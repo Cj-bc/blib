@@ -16,6 +16,10 @@ here's some rule to make library.
    +-- prefix 'lib'
 
 
+  And as this is library, option(-something) is not good.
+  Please design simple
+
+
 # initialize your code
   * you don't need write shebung (isn't it good?)
   * At hte top, write summary of your library
@@ -27,6 +31,7 @@ here's some rule to make library.
     # ver: 0.0.1
     # tag: graph UI
     # desc: Make UI easier. Provide a lot of UI parts and user interface.
+    # dependencies: 
     #
     # copyright (c) 2018 Cj-bc
     # This software is released under MIT License.
@@ -57,3 +62,29 @@ here's some rule to make library.
     make a function named '<library_name>.init'
     `blib` will automatically execute them first.
 
+
+# comments
+  From comment, `blib` will automatically generate text for `blib info`
+and `blib man`
+  So, please write in this style.
+
+  1. write description before functions.
+    Please write description so that user can search easier.
+
+    For example: my 'box' function from Cj-bc/vstult-3,
+    ```
+      # Draw box. can contains texts
+      # @stdin string text
+      # @stdout string text same as stdin
+      # @param <int start_y> <int width> <int height> <string left|center|right>
+      # @return 0 success
+    ```
+
+  2. write description before environmental variable.
+    Please write description for environmental variables.
+
+    For example:
+    ```
+      # @env library path
+      BLIB_PATH="/usr/local/lib/blib"
+    ```
