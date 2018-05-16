@@ -33,6 +33,10 @@ function import {
     [ $(blib info ${lib})] || error ${ERROR_NOTINSTALLED[1]} && return ${ERROR_NOTINSTALLED[0]}
     source ${lib_path}/lib${lib}.sh
   done
+
+  # record library names
+  [ -z "${BLIB_LIBRARY[@]}"] && BLIB_LIBRARY=(${lib_name[@]}) || BLIB_LIBRARY=(${BLIB_LIBRARY[@]} ${lib_name[@]})
+
 }
 
 import $@
