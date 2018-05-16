@@ -37,6 +37,9 @@ function import {
   # record library names
   [ -z "${BLIB_LIBRARY[@]}"] && BLIB_LIBRARY=(${lib_name[@]}) || BLIB_LIBRARY=(${BLIB_LIBRARY[@]} ${lib_name[@]})
 
+  # execute all <lib>.init
+  init ${lib_name[@]}
+
 }
 
 import $@
