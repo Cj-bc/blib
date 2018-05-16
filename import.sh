@@ -19,8 +19,7 @@ source $(blib libpath)/libstandard.sh
 # @return 3 no library is given.
 function import {
 
-  local lib_path="/usr/local/lib"
-#  local lib_path=`blib libpath`
+  local lib_path=`blib libpath`
   local lib_name=($@)
 
   local ERROR_NOTINSTALLED=("2" "library is not installed")
