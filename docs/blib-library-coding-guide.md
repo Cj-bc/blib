@@ -29,7 +29,7 @@ here's some rule to make library.
     # libtkinsh.sh  -- Tkinter in Shellscript
     #
     # ver: 0.0.1
-    # tag: graph UI
+    # tags: graphic UI
     # desc: Make UI easier. Provide a lot of UI parts and user interface.
     # dependencies: 
     #
@@ -72,6 +72,7 @@ and `blib man`
     Please write description so that user can search easier.
 
     For example: my 'box' function from Cj-bc/vstult-3,
+
     ```
       # Draw box. can contains texts
       # @stdin string text
@@ -86,5 +87,17 @@ and `blib man`
     For example:
     ```
       # @env library path
-      BLIB_PATH="/usr/local/lib/blib"
+      export BLIB_PATH="/usr/local/lib/blib"
     ```
+
+
+# repository managing
+  Please manage your library on Github.
+  I'll try to support other way, but now, nothing is supported but Github.
+
+  repository name should form:
+
+  libtkinsh
+  -+-======
+   |    |------ your library name
+   +------ prefix 'lib'
