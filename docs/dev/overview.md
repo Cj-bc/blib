@@ -5,7 +5,8 @@
 
 Commands:
   * 'import', 'using', 'include' command  -- import given library more easier.
-  * `blib install <lib_name>` -- install <lib_name>
+  * `blib install <user/lib>` -- install <user/lib> (like 'Cj-bc/tkinsh). You don't need 'lib' before library name.
+  * `blib getlib  <shellscript_file>`  -- install all libraries that is used in given file.
   * `blib uninstall <lib_name>` -- uninstall <lib_name>
   * `blib list` -- show all installed libraries
   * `blib info <lib>` -- show library infomation
