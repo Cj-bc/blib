@@ -25,7 +25,7 @@ function import {
   local -r ERROR_NOLIBGIVEN=("3" "no library is given")
 
   # if no arg are given, exit
-  [ -z ${lib_name} ] && echo ${ERROR_NOLIBGIVEN[1]} && return ${ERROR_NOLIBGIVEN[0]}
+  [ -z "${lib_name}" ] && error ${ERROR_NOLIBGIVEN[1]} && return ${ERROR_NOLIBGIVEN[0]}
 
   # 1. check whether each library is installed
   # 2. if installed, source it
