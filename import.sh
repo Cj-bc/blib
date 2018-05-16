@@ -2,10 +2,21 @@
 #
 # import -- source libraries in C like way
 #
+# ver: 0.0.1
+# tags: standard command
+# desc: source given libraries
 # copyright (c) 2018 Cj-bc
 #
-# usage: import <library>
+# usage: import <library> <Library2> <Library3> ...
 
+source $(blib libpath)/libstandard.sh
+
+# source given libraries
+# @param <string lib1> <string lib2> <string lib3> ...
+# @return 0 success
+# @return 1 fail in the function
+# @return 2 library is not installed
+# @return 3 no library is given.
 function import {
 
   local lib_path="/usr/local/lib"
