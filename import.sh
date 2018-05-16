@@ -29,10 +29,9 @@ function import {
 
   # 1. check whether each library is installed
   # 2. if installed, source it
-  for lib in ${lib_name[@]}
-  do
     [ -f "$lib_path/lib${lib}/${lib}.sh" ] || echo ${ERROR_NOTINSTALLED[1]} && return ${ERROR_NOTINSTALLED[0]}
     source ${lib_path}/lib${lib}/${lib}.sh
+  for lib in ${lib_name[@]}; do
   done
 }
 
