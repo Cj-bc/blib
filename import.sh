@@ -21,9 +21,8 @@ function import {
 
   local lib_path=`blib libpath`
   local lib_name=($@)
-
-  local ERROR_NOTINSTALLED=("2" "library is not installed")
-  local ERROR_NOLIBGIVEN=("3" "no library is given")
+  local -r ERROR_NOTINSTALLED=("2" "library is not installed")
+  local -r ERROR_NOLIBGIVEN=("3" "no library is given")
 
   # if no arg are given, exit
   [ -z ${lib_name} ] && echo ${ERROR_NOLIBGIVEN[1]} && return ${ERROR_NOLIBGIVEN[0]}
