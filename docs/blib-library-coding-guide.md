@@ -35,7 +35,11 @@ here's some rule to make library.
     #
     # copyright (c) 2018 Cj-bc
     # This software is released under MIT License.
+    #
   ```
+
+  make sure the last line contains only '#'.
+  This is because of blib.generate_doc.
 
 # coding style
   Basically, you can code in any way.
