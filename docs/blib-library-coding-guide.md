@@ -71,7 +71,6 @@ here's some rule to make library.
     So, if 'function' isn't exist, `blib` can't detect that function.
     I'll try to support other way to interpret.
 
-
 # comments
   From comment, `blib` will automatically generate text for `blib info`
 and `blib man`

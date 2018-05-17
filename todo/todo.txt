@@ -1,1 +1,2 @@
-make test code
+make test code for blib itself
+make test code for import
