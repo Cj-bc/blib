@@ -62,6 +62,11 @@ here's some rule to make library.
     make a function named '<library_name>.init'
     `blib` will automatically execute them first.
 
+  5. Start functions with 'function'
+    `blib` generate documents interpreting those keywords.
+    So, if 'function' isn't exist, `blib` can't detect that function.
+    I'll try to support other way to interpret.
+
 
 # comments
   From comment, `blib` will automatically generate text for `blib info`
