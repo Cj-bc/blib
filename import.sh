@@ -1,11 +1,10 @@
-# import -- source libraries in C like way
+# libimport -- source libraries in C like way
 #
 # ver: 0.0.1
 # tags: standard command
 # desc: source given libraries
 # copyright (c) 2018 Cj-bc
 #
-# usage: import <library> <Library2> <Library3> ...
 
 
 # source given libraries
