@@ -7,7 +7,6 @@
 #
 # usage: import <library> <Library2> <Library3> ...
 
-source $(blib libpath)/libstandard.sh
 
 # source given libraries
 # @param <string lib1> <string lib2> <string lib3> ...
@@ -17,7 +16,9 @@ source $(blib libpath)/libstandard.sh
 # @return 3 no library is given.
 function import {
 
-  local lib_path=`blib libpath`
+  source $(blib libpath)/libstandard.sh
+
+  local lib_path=$(blib libpath)
   local lib_name=($@)
   local -r ERROR_NOTINSTALLED=("2" "library is not installed")
   local -r ERROR_NOLIBGIVEN=("3" "no library is given")
