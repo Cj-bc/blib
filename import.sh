@@ -1,5 +1,3 @@
-#!/bin/bash
-#
 # import -- source libraries in C like way
 #
 # ver: 0.0.1
@@ -39,7 +37,4 @@ function import {
 
   # execute all <lib>.init
   init ${lib_name[@]}
-
 }
-
-import $@
