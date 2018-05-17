@@ -39,3 +39,6 @@ Supports:
     $ cd blib
     $ ./install.sh
     ```
+
+  for all, you should write down below in .bashrc or .bash_profile or something like that,
+    `source $(bpkg libpath)/libimport.sh`
