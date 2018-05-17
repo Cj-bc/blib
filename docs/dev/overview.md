@@ -4,7 +4,7 @@
 # feature
 
 Commands:
-  * 'import', 'include' command  -- import given library more easier.
+  * 'import' command  -- import given library more easier.
   * `blib install <lib_name>` -- install <lib_name>
   * `blib uninstall <lib_name>` -- uninstall <lib_name>
   * `blib list` -- show all installed libraries
