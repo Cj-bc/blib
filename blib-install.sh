@@ -48,5 +48,8 @@ function blib.install {
 function blib.runinstall {
   for lib in $@;do
     blib.install $lib
+    [ $? -ne 0 ] && error "error occured while installing ${lib}" && return 1
   done
+
+  return 0
 }
