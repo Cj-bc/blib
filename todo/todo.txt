@@ -1,0 +1,3 @@
+complete blib.generate_doc
+complete blib-list
+write comments for blib.runinstall
