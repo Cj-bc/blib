@@ -2,6 +2,10 @@
 
 import standard
 
+# generate documents from source-code
+# @param <string file_name>
+# @return 0 success
+# @return 1 library not found
 function blib.generate_doc {
 
   local lib_name=$1
@@ -37,6 +41,10 @@ function blib.install {
   return 0
 }
 
+# run install function. This could given multiple names.
+# @param <string lib_name> <string lib_name> ...
+# @return 0 success
+# @return 1 library not found
 function blib.runinstall {
   for lib in $@;do
     blib.install $lib
