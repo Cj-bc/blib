@@ -25,15 +25,17 @@ function import {
   # if no arg are given, exit
   [ -z "${lib_name}" ] && error ${ERROR_NOLIBGIVEN[1]} && return ${ERROR_NOLIBGIVEN[0]}
 
+  # 1. check whether it's library or user file
   # 1. check whether each library is installed
   # 2. if installed, source it
   for lib in ${lib_name[@]}; do
+    [[ "$lib" =~ "user:"* ]] && source "$(dirname $0)/lib${lib#user:}".sh
     [ $(blib info ${lib})] || error ${ERROR_NOTINSTALLED[1]} && return ${ERROR_NOTINSTALLED[0]}
     source ${lib_path}/lib${lib}.sh
   done
 
   # record library names
-  [ -z "${BLIB_LIBRARY[@]}"] && BLIB_LIBRARY=(${lib_name[@]}) || BLIB_LIBRARY=(${BLIB_LIBRARY[@]} ${lib_name[@]})
+  [ -z "${BLIB_LIBRARY[@]}"] && BLIB_LIBRARY=(${lib_name[@]#user:}) || BLIB_LIBRARY=(${BLIB_LIBRARY[@]} ${lib_name[@]#user:})
 
   # execute all <lib>.init
   init ${lib_name[@]}
