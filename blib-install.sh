@@ -6,7 +6,7 @@ import standard
 # @param <string file_name>
 # @return 0 success
 # @return 1 library not found
-function blib.generate_doc {
+function blib.install.generate_doc {
 
   local lib_name=$1
   vim -e -s $lib_name <<-EOT
@@ -35,7 +35,7 @@ function blib.install {
   git clone https://github.com/${lib}.git
   git checkout $(git describe --tags --addrev=0)
   cd $(lib##*\/)
-  blib.generate_doc $(lib##*\/)
+  blib.install.generate_doc $(lib##*\/)
   install ${lib##*\/}.sh $(blib libpath)/${lib##*\/}.sh
   install ${lib##*\/}.bdoc $(blib libpath)/docs/${lib##*\/}.bdoc
   return 0
@@ -45,7 +45,7 @@ function blib.install {
 # @param <string lib_name> <string lib_name> ...
 # @return 0 success
 # @return 1 library not found
-function blib.runinstall {
+function blib.install.runinstall {
   for lib in $@;do
     blib.install $lib
     [ $? -ne 0 ] && error "error occured while installing ${lib}" && return 1
