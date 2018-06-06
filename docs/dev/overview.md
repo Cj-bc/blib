@@ -11,7 +11,9 @@ Commands:
   * `blib list` -- show all installed libraries
   * `blib info <lib>` -- show library infomation
   * `blib man <lib>` -- show details about <lib>
-  * `blib libpath` -- output libraries path
+
+Environmental vars
+  * BLIB_ROOT -- the path where all libraries installed
 
 Supports:
   * bash-completion for `blib`
@@ -29,10 +31,14 @@ Supports:
   _Nothing supported yet_
 
   1. bpkg
-    `$ bpkg install Cj-bc/blib`
+    ```
+      $ bpkg install Cj-bc/blib
+      $ echo "export BLIB_ROOT=/usr/local/lib/blib/"
+    ```
 
   2. homebrew
     `$ brew insatll Cj-bc/blib/blib`
+     $ echo "export BLIB_ROOT=/usr/local/lib/blib/"
 
   3. from source
     ```

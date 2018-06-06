@@ -15,9 +15,9 @@
 # @return 3 no library is given.
 function import {
 
-  source $(blib libpath)/libstandard.sh
+  source ${BLIB_ROOT}/libstandard.sh
 
-  local lib_path=$(blib libpath)
+  local lib_path=$(BLIB_ROOT)
   local lib_name=($@)
   local -r ERROR_NOTINSTALLED=("2" "library is not installed")
   local -r ERROR_NOLIBGIVEN=("3" "no library is given")
