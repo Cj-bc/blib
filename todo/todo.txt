@@ -1,2 +1,5 @@
-make test code for blib itself
-make test code for import
+implement blib::uninstall @1.0
+implement blib::list @1.0
+implement blib::info @1.0
+implement blib::man @1.0
+implement main @1.0
