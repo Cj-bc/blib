@@ -28,7 +28,9 @@ Supports:
 
 
 # dependencies
+  * bash-oo-framework -- the basement framework. This is *implemented*.
   * git -- to clone libraries
+  * realpath -- to verify library name. provided by gnucoreutil, etc.
 
 
 # installation
