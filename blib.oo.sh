@@ -5,7 +5,7 @@
 #
 # @(#) version -
 
-source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/lib/oo-bootstrap.sh"
+source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
 
 class:blib() {
   private string prefix
