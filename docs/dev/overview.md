@@ -1,12 +1,17 @@
 # blib
   a library manager for bash script.
   Not a Package Manager. ( package manager for bash is here,[bpkg/bpkg](https://github.com/bpkg/bpkg))
+
+# This project uses bash-oo-framework as basement.
+
+This project uses [niieani/bash-oo-framework](https://github.com/niieani/bash-oo-framework) as basement.
+The *import* command is provided by the framework.
+
 # feature
 
 Commands:
-  * 'import', 'using', 'include' command  -- import given library more easier.
-  * `blib install <user/lib>` -- install <user/lib> (like 'Cj-bc/tkinsh). You don't need 'lib' before library name.
-  * `blib getlib  <shellscript_file>`  -- install all libraries that is used in given file.
+  * 'import' command  -- import given library more easier.
+  * `blib install <lib_name>` -- install <lib_name>
   * `blib uninstall <lib_name>` -- uninstall <lib_name>
   * `blib list` -- show all installed libraries
   * `blib info <lib>` -- show library infomation
@@ -46,6 +51,3 @@ Supports:
     $ cd blib
     $ ./install.sh
     ```
-
-  for all, you should write down below in .bashrc or .bash_profile or something like that,
-    `source $(bpkg libpath)/libimport.sh`
