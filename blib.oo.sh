@@ -48,7 +48,7 @@ class:blib() {
     [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
     [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
     echo "Removing [${libname}]..."
-    rm -rf "$(blib::options --prefix)/${libname}"
+    rm -r "$(blib::options --prefix)/${libname}"
     echo "Done."
 
     return 0
