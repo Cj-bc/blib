@@ -5,7 +5,8 @@
 #
 # @(#) version -
 
-source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/lib/oo-bootstrap.sh"
+source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
+import util/class
 
 class:blib() {
   private string prefix
@@ -26,11 +27,12 @@ class:blib() {
     [string] libname
 
     # throw exception if the libname is wrong.
-    [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw
+    [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
     echo "Installing [${libname}]..."
     git clone "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" >/dev/null 2>&1
     if [ "$?" -ne 0 ]; then
       e="Fail to clone." throw
+      return
     fi
     echo "Done."
 
@@ -40,7 +42,15 @@ class:blib() {
   # uninstall given library.
   # @param <string libname>
   blib::uninstall() {
+    [string] libname
 
+    [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
+    [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
+    echo "Removing [${libname}]..."
+    rm -rf "$(blib::options --prefix)/${libname}"
+    echo "Done."
+
+    return 0
   }
 
   # list all installed libraries.
