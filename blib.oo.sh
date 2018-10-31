@@ -49,6 +49,9 @@ class:blib() {
     [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
     echo "Removing [${libname}]..."
     rm -r "$(blib::options --prefix)/${libname}"
+    if [ "$?" -ne 0 ]; then
+      e="Fail to uninstall." throw
+    fi
     echo "Done."
 
     return 0
