@@ -40,7 +40,18 @@ class:blib() {
   # uninstall given library.
   # @param <string libname>
   blib::uninstall() {
+    [string] libname
 
+    [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
+    [[ ! -d "$(blib --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw
+    echo "Removing [${libname}]..."
+    temp="/tmp/blib_cache_$(date +%y%m%d%H%M%S)"
+    mkdir "$temp"
+    mv "$(blib --prefix)/${libname}" "${temp}/"
+    # rm -rf "$(blib --prefix)/${libname}"
+    echo "Done."
+
+    return 0
   }
 
   # list all installed libraries.
