@@ -55,19 +55,26 @@ class:blib() {
 
   # list all installed libraries.
   blib::list() {
+    local prefix="$(blib::options --prefix)"
+    if [[ "$(ls ${prefix})" = "" ]]; then
+      echo "No library is installed."
+    else
+      command ls "$prefix"
+    fi
 
+    return 0
   }
 
   # output infomation about given library.
   # @param <string libname>
   blib::info() {
-
+    :
   }
 
   # execute man for given library.
   # @param <string libname>
   blib::man() {
-
+    :
   }
 }
 
