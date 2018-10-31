@@ -26,11 +26,12 @@ class:blib() {
     [string] libname
 
     # throw exception if the libname is wrong.
-    [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw
+    [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
     echo "Installing [${libname}]..."
     git clone "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" >/dev/null 2>&1
     if [ "$?" -ne 0 ]; then
       e="Fail to clone." throw
+      return
     fi
     echo "Done."
 
@@ -43,7 +44,7 @@ class:blib() {
     [string] libname
 
     [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
-    [[ ! -d "$(blib --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw
+    [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
     echo "Removing [${libname}]..."
     temp="/tmp/blib_cache_$(date +%y%m%d%H%M%S)"
     mkdir "$temp"
