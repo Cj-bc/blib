@@ -44,6 +44,7 @@ class:blib() {
   blib::uninstall() {
     [string] libname
 
+    [[ ! "$(realpath $(blib::options --prefix)/${libname})" =~ $(blib::options --prefix)/* ]] && e="invalid library name." throw && return
     [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
     [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
     echo "Removing [${libname}]..."
