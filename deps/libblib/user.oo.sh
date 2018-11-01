@@ -20,4 +20,25 @@ class:user() {
     fi
     return 0
   }
+
+  # check if user has given repo
+  # @param <string name> <string repo>
+  user::has_repo() {
+    [string] name
+    [string] repo
+
+    echo "test" # DEBUG
+    try {
+      user::is_exist "$name" >/dev/null
+    } catch {
+      e="${__EXCEPTION__[1]}" throw
+      return -1
+    }
+    if [[ "$(curl \"https://github.com/${name}/${repo}.git\" -o /dev/null -w '%{http_code}' -s)" != "200" ]]; then
+      e="repo not found" throw
+    else
+      echo "Repo found [${name}/${repo}]."
+    fi
+    return 0
+  }
 }
