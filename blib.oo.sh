@@ -6,7 +6,7 @@
 # @(#) version -
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
-import util/class util/log util/trycatch util/exception UI/Console
+import util/class util/log util/trycatch util/exception UI/Console UI/Color
 import ../../libblib/user.oo.sh
 
 
