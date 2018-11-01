@@ -31,7 +31,7 @@ class:blib() {
     echo "Installing [${libname}]..."
     git clone --depth 1 -- "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
-      e="Fail to clone." throw
+      Console::WriteStdErr "Fail to clone."
       return
     fi
     echo "Done."
@@ -50,7 +50,7 @@ class:blib() {
     echo "Removing [${libname}]..."
     rm -r "$(blib::options --prefix)/${libname}"
     if [ "$?" -ne 0 ]; then
-      e="Fail to uninstall." throw
+      Console::WriteStdErr "Fail to uninstall."
     fi
     echo "Done."
 
