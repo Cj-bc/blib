@@ -96,9 +96,11 @@ class:blib() {
 Type::InitializeStatic blib
 
 function main() {
-  case "$1" in
-    "list"|"install"|"uninstall"|"info"|"man"|"help" ) shift;blib::$1 $@;;
-    "-"* ) blib::options $1;;
+  local cmd="$1"
+  shift
+  case "$cmd" in
+    list|install|uninstall|info|man|help ) eval 'blib::$cmd' $@;;
+    -* ) blib::options $cmd;;
     * ) blib::options --help;;
   esac
 }
