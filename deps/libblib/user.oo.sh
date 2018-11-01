@@ -42,3 +42,5 @@ class:user() {
     return 0
   }
 }
+
+Type::InitializeStatic user
