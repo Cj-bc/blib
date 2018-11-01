@@ -10,7 +10,6 @@ import util/class
 import ../../libblib/user.oo.sh
 
 class:blib() {
-  private string prefix
 
   # treat options.
   # @param <string option>
