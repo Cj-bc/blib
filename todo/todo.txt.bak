@@ -1,4 +1,3 @@
-x 2018-11-01 implement blib::uninstall @1.0
 implement blib::info @1.0
 implement blib::man @1.0
-implement main @1.0
+x 2018-11-01 implement main @1.0

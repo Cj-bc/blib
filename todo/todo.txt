@@ -1,3 +1,4 @@
 implement blib::info @1.0
 implement blib::man @1.0
-implement main @1.0
+Add unit tests for libblib/user
+Add unit tests for blib.oo.sh
