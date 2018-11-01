@@ -35,14 +35,15 @@ class:blib() {
       echo -n "Checking the repo [${libname}]..."
       user::has_repo "${libname%/*}" "${libname#*/}"
     } catch {
-      Console::WriteStdErr "\n${__EXCEPTION__[1]}"
+      echo ""
+      Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
       return -1
     }
 
     echo "Installing [${libname}]..."
     git clone --depth 1 -- "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
-      Console::WriteStdErr "Fail to clone."
+      Console::WriteStdErr "$(UI.Color.Red)Fail to clone.$(UI.Color.Default)"
       return
     fi
     echo "Done."
@@ -61,7 +62,7 @@ class:blib() {
     echo "Removing [${libname}]..."
     rm -r "$(blib::options --prefix)/${libname}"
     if [ "$?" -ne 0 ]; then
-      Console::WriteStdErr "Fail to uninstall."
+      Console::WriteStdErr "$(UI.Color.Red)Fail to uninstall$(UI.Color.Default)"
     fi
     echo "Done."
 
