@@ -27,7 +27,6 @@ class:user() {
     [string] name
     [string] repo
 
-    echo "test" # DEBUG
     try {
       user::is_exist "$name" >/dev/null
     } catch {
