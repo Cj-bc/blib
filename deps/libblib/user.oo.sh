@@ -12,8 +12,9 @@ class:user() {
   # @exception "User not found"
   user::is_exist() {
     [string] name
-    if [[ "$(curl \"https://github.com/${name}\" -o /dev/null -w '%{http_code}' -s)" != "200" ]]; then
+    if [[ "$(curl \"https://github.com/${name}\" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
       e="User not found" throw
+      return 1
     else
       echo "User found [${name}]."
     fi
