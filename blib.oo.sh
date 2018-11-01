@@ -30,12 +30,12 @@ class:blib() {
     # throw exception if the libname is wrong.
     [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
     try {
-      echo "Checking the user [${libname%/*}]..."
+      echo -n "Checking the user [${libname%/*}]..."
       user::is_exist "${libname%/*}"
-      echo "Checking the repo [${libname}]..."
+      echo -n "Checking the repo [${libname}]..."
       user::has_repo "${libname%/*}" "${libname#*/}"
     } catch {
-      Console::WriteStdErr "${__EXCEPTION__[1]}"
+      Console::WriteStdErr "\n${__EXCEPTION__[1]}"
       return -1
     }
 

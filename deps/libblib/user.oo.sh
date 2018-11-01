@@ -16,7 +16,7 @@ class:user() {
       e="User not found" throw
       return 1
     else
-      echo "User found [${name}]."
+      echo "$(UI.Powerline.OK)"
     fi
     return 0
   }
@@ -36,7 +36,7 @@ class:user() {
     if [[ "$(curl "https://github.com/${name}/${repo}.git" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
       e="repo not found" throw
     else
-      echo "Repo found [${name}/${repo}]."
+      echo "$(UI.Powerline.OK)"
     fi
     return 0
   }
