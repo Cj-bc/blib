@@ -6,10 +6,11 @@
 # @(#) version -
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
-import util/class
+import util/class util/log util/trycatch util/exception UI/Console UI/Color
+import ../../libblib/user.oo.sh
+
 
 class:blib() {
-  private string prefix
 
   # treat options.
   # @param <string option>
@@ -28,10 +29,20 @@ class:blib() {
 
     # throw exception if the libname is wrong.
     [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
+    try {
+      echo -n "Checking the user [${libname%/*}]..."
+      user::is_exist "${libname%/*}"
+      echo -n "Checking the repo [${libname}]..."
+      user::has_repo "${libname%/*}" "${libname#*/}"
+    } catch {
+      Console::WriteStdErr "\n${__EXCEPTION__[1]}"
+      return -1
+    }
+
     echo "Installing [${libname}]..."
     git clone --depth 1 -- "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
-      e="Fail to clone." throw
+      Console::WriteStdErr "Fail to clone."
       return
     fi
     echo "Done."
@@ -50,7 +61,7 @@ class:blib() {
     echo "Removing [${libname}]..."
     rm -r "$(blib::options --prefix)/${libname}"
     if [ "$?" -ne 0 ]; then
-      e="Fail to uninstall." throw
+      Console::WriteStdErr "Fail to uninstall."
     fi
     echo "Done."
 
@@ -85,9 +96,11 @@ class:blib() {
 Type::InitializeStatic blib
 
 function main() {
-  case "$1" in
-    "list"|"install"|"uninstall"|"info"|"man"|"help" ) shift;blib::$1 $@;;
-    "-"* ) blib::options $1;;
+  local cmd="$1"
+  shift
+  case "$cmd" in
+    list|install|uninstall|info|man|help ) eval 'blib::$cmd' $@;;
+    -* ) blib::options $cmd;;
     * ) blib::options --help;;
   esac
 }
