@@ -29,6 +29,16 @@ class:blib() {
 
     # throw exception if the libname is wrong.
     [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
+    try {
+      echo "Checking the user [${libname%/*}]..."
+      user::is_exist "${libname%/*}"
+      echo "Checking the repo [${libname}]..."
+      user::has_repo "${libname%/*}" "${libname#*/}"
+    } catch {
+      Console::WriteStdErr "${__EXCEPTION__[1]}"
+      return -1
+    }
+
     echo "Installing [${libname}]..."
     git clone --depth 1 -- "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
