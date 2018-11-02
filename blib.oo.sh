@@ -30,14 +30,20 @@ class:blib() {
     # throw exception if the libname is wrong.
     [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
     try {
+      # 1. Does the same library already installed?
+      # 2. Does user exist?
+      # 3. Does repository exist?
+      if [[ "$(blib::list)" =~ .*\s*${libname#*/}\s*.* ]]; then
+        e="The library is already installed" throw
+      fi
       echo -n "Checking the user [${libname%/*}]..."
       user::is_exist "${libname%/*}"
       echo -n "Checking the repo [${libname}]..."
       user::has_repo "${libname%/*}" "${libname#*/}"
     } catch {
-      echo ""
+      [[ "${__EXCEPTION__[1]}" != "The library is already installed" ]] && echo "" # do not add newline
       Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
-      return -1
+      return
     }
 
     echo "Installing [${libname}]..."
