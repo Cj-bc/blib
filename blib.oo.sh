@@ -38,7 +38,7 @@ class:blib() {
       echo -n "Checking the repo [${libname}]..."
       user::has_repo "${libname%/*}" "${libname#*/}"
     } catch {
-      echo ""
+      [[ "${__EXCEPTION__[1]}" != "The library is already installed" ]] && echo ""
       Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
       return
     }
