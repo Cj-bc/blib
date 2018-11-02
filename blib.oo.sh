@@ -30,6 +30,9 @@ class:blib() {
     # throw exception if the libname is wrong.
     [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
     try {
+      if [[ "$(blib::list)" =~ .*\s*${libname#*/}\s*.* ]]; then
+        e="The library is already installed" throw
+      fi
       echo -n "Checking the user [${libname%/*}]..."
       user::is_exist "${libname%/*}"
       echo -n "Checking the repo [${libname}]..."
