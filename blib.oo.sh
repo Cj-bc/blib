@@ -37,7 +37,7 @@ class:blib() {
     } catch {
       echo ""
       Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
-      return -1
+      return
     }
 
     echo "Installing [${libname}]..."
