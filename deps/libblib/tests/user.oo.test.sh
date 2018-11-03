@@ -20,6 +20,9 @@ describe 'user::is_exist'
     user::is_exist 'nonexistnonexistnonexist'
   expectFail
 
+  summary
+
+
 describe 'user::has_repo'
   it "tests it'll be passed if exist repo is given."
   try
@@ -36,4 +39,4 @@ describe 'user::has_repo'
     user::has_repo 'nonexistnonexistnonexist' 'blib'
   expectFail
 
-summary
+  summary
