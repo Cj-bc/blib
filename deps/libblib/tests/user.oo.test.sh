@@ -8,22 +8,32 @@ source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/../../bash-oo-framework/lib/oo-boo
 import util/test UI/Color util/tryCatch
 import ../../libblib/user.oo.sh
 
-it "user::is_exist (expect pass)"
-try
-  user::is_exist 'Cj-bc'
-expectPass
 
-it "user::is_exist (expect fail)"
-try
-  user::is_exist 'Cj-bc'
-expectFail
+describe 'user::is_exist'
+  it "tests it'll be passed if exist user is given."
+  try
+    user::is_exist 'Cj-bc'
+  expectPass
 
-it "user::has_repo (expect pass)"
-try
-  user::has_repo 'Cj-bc' 'blib'
-expectPass
+  it "tests it'll be failed if non-exist user is given."
+  try
+    user::is_exist 'nonexistnonexistnonexist'
+  expectFail
 
-it "user::has_repo (expect fail)"
-try
-  user::has_repo 'Cj-bc' 'IdontHaveThisErrrr'
-expectFail
+describe 'user::has_repo'
+  it "tests it'll be passed if exist repo is given."
+  try
+    user::has_repo 'Cj-bc' 'blib'
+  expectPass
+
+  it "tests it'll be failed if non-exist repo is given."
+  try
+    user::has_repo 'Cj-bc' 'IdontHaveThisErrrr'
+  expectFail
+
+  it "tests it'll be failed if non-exist user and repo is given."
+  try
+    user::has_repo 'nonexistnonexistnonexist' 'blib'
+  expectFail
+
+summary
