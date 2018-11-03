@@ -33,7 +33,7 @@ class:user() {
       e="${__EXCEPTION__[1]}" throw
       @return
     }
-    if [[ "$(curl "https://github.com/${name}/${repo}.git" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
+    if [[ "$(curl "https://github.com/${name}/${repo}" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
       e="repo not found" throw
     else
       echo "$(UI.Powerline.OK)"
