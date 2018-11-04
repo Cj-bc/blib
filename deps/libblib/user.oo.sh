@@ -14,7 +14,6 @@ class:user() {
     [string] name
     if [[ "$(curl "https://github.com/${name}" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
       e="User not found" throw
-      @return
     else
       echo "$(UI.Powerline.OK)"
     fi
