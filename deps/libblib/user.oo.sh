@@ -27,12 +27,8 @@ class:user() {
     [string] name
     [string] repo
 
-    try {
-      user::is_exist "$name" >/dev/null
-    } catch {
-      e="${__EXCEPTION__[1]}" throw
-      @return
-    }
+    user::is_exist "$name" >/dev/null
+
     if [[ "$(curl "https://github.com/${name}/${repo}" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
       e="repo not found" throw
     else
