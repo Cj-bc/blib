@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# blib -- bash library manager
+#
 # Copyright 2018 (c) Cj-bc
 # This software is released under MIT License
 #
