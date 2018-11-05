@@ -18,7 +18,7 @@ Commands:
   * `blib man <lib>` -- show details about <lib>
 
 Environmental vars
-  * BLIB_ROOT -- the path where all libraries installed
+  * BLIB_ROOT -- the path where all libraries installed. default: `~/.blib`
 
 Supports:
   * bash-completion for `blib`

@@ -20,7 +20,7 @@ class:blib() {
     [string] option
 
     case $option in
-      "--prefix" ) echo "${HOME}/.blib";;
+      "--prefix" ) echo "${BLIB_ROOT:-~/.bilb}";;
     esac
   }
 
