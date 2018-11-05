@@ -1,4 +1,4 @@
-DEPSDIR := 'deps/libblib'
+DEPSDIR := ./deps/libblib
 TESTS := $(wildcard $(DEPSDIR)/tests/*.bats) $(wildcard ./tests/*.bats)
 
 test : $(TESTS)
