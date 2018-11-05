@@ -39,13 +39,15 @@ Supports:
 
   1. bpkg
     ```
-      $ bpkg install Cj-bc/blib
-      $ echo "export BLIB_ROOT=/usr/local/lib/blib/"
+    $ bpkg install Cj-bc/blib
+    $ echo "export BLIB_ROOT=/if/you/want/some/other/path"
     ```
 
   2. homebrew
-    `$ brew insatll Cj-bc/blib/blib`
-     $ echo "export BLIB_ROOT=/usr/local/lib/blib/"
+    ```
+    $ brew insatll Cj-bc/blib/blib
+    $ echo "export BLIB_ROOT=/if/you/want/some/other/path"
+    ```
 
   3. from source
     ```
