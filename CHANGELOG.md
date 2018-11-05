@@ -16,8 +16,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - version management
   - config file for each library
 
-### Change
-  - prefix might be changed in the future(before v1)
+## [v0.1.2] - 2018/11/05 [YANKED]
+### Added
+  - variable `BLIB_ROOT`: set root directory for blib. default: $HOME/.blib
+### Changed
+  - Prefix has been decided as `$HOME/.blib`
+### Fixed
+  - Remove fork bomb :(
+      the code called `blib` itself at the bigining of customized oo-bootstrap.sh.
+      I remove that.
 
 ## [v0.1.1] - 2018/11/05
 ### Fixed
