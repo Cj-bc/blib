@@ -105,6 +105,7 @@ class:blib() {
 Type::InitializeStatic blib
 
 function main() {
+  [[ ! -d "$(blib::options --prefix)" ]] && { echo "Initialize blib directory"; mkdir "$(blib::options --prefix)"; echo "done."; }
   local cmd="$1"
   shift
   case "$cmd" in
