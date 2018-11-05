@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Change
   - prefix might be changed in the future(before v1)
 
+## [v0.1.1] - 2018/11/05
+### Fixed
+  - don't echo stdout of 'type' command
 
 ## [v0.1.0] - 2018/11/05
 ### Added
