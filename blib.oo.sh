@@ -5,7 +5,7 @@
 # Copyright 2018 (c) Cj-bc
 # This software is released under MIT License
 #
-# @(#) version -
+# @(#) version 0.1.0
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
 import util/class util/log util/trycatch util/exception UI/Console UI/Color
@@ -68,7 +68,7 @@ class:blib() {
     [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
     [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
     echo "Removing [${libname}]..."
-    rm -r "$(blib::options --prefix)/${libname}"
+    rm -rf "$(blib::options --prefix)/${libname}"
     if [ "$?" -ne 0 ]; then
       Console::WriteStdErr "$(UI.Color.Red)Fail to uninstall$(UI.Color.Default)"
     fi
