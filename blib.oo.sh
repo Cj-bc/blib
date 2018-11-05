@@ -107,7 +107,7 @@ Type::InitializeStatic blib
 function main() {
   [[ ! -d "$(blib::options --prefix)" ]] && { echo "Initialize blib directory"; mkdir "$(blib::options --prefix)"; echo "done."; }
   local cmd="$1"
-  shift
+  shift || true
   case "$cmd" in
     list|install|uninstall|info|man|help ) eval 'blib::$cmd' $@;;
     -* ) blib::options $cmd;;
