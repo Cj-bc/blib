@@ -10,12 +10,14 @@
 # feature
 
 ## Commands:
-  * 'import'コマンド  -- スクリプトからライブラリを読み込むのに使用します。 `import blib:<lib>`の形で使用してください。
   * `blib install <lib_name>` -- <lib_name>をインストールします
   * `blib uninstall <lib_name>` -- <lib_name>をアンインストールします
   * `blib list` -- インストール済みのライブラリの一覧を返します
   * `blib info <lib>` -- ライブラリの情報を返します（バージョン等）
   * `blib man <lib>` -- <lib>の詳細を表示します
+
+## スクリプト作成時用コマンド
+  * 'import'コマンド  -- スクリプトからライブラリを読み込むのに使用します。 `import blib:<lib>`の形で使用してください。
 
 ## 環境変数
   * BLIB_ROOT -- blibのルートパスです。全てのライブラリはこの下に置かれます。 デフォルト: `~/.blib`

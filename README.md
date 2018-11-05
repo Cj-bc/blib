@@ -10,12 +10,14 @@ The *import* command is provided by the framework.
 # feature
 
 ## Commands:
-  * 'import' command  -- import given library more easier. use `import blib:<lib>`
   * `blib install <lib_name>` -- install <lib_name>
   * `blib uninstall <lib_name>` -- uninstall <lib_name>
   * `blib list` -- show all installed libraries
   * `blib info <lib>` -- show library infomation
   * `blib man <lib>` -- show details about <lib>
+
+## Command for scripting
+  * 'import' command  -- import given library more easier. use `import blib:<lib>`
 
 ## Environmental vars
   * BLIB_ROOT -- the path where all libraries installed. default: `~/.blib`
