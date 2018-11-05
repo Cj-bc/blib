@@ -57,3 +57,20 @@ The *import* command is provided by the framework.
     $ cd blib
     $ ./install.sh
     ```
+
+# how to make scripts using blib libraries
+
+You should add this line at the top of your script(of course after shebang):
+
+```bash
+source "$(blib --prefix)/bash-oo- framework/lib/oo-bootstrap.sh"
+```
+
+By doing this, you can use `import` command to import libraries.  
+In this case, **Do not use official bash-oo-framework because it doesn't support blib**  
+
+Or, you can source libraries directly by doing:
+
+```bash
+source "$(blib --prefix)/path/to/the/script"
+```

@@ -60,3 +60,22 @@
     $ cd blib
     $ ./install.sh
     ```
+
+# blibライブラリを使用してスクリプトを作成する
+
+スクリプトの一番上に（勿論shebangの後に）以下の行を加えてください:
+
+
+```bash
+source "$(blib --prefix)/bash-oo- framework/lib/oo-bootstrap.sh"
+```
+
+これにより、`import`コマンドを用いてライブラリを使用できるようになります。  
+この場合、**公式のbash-oo-frameworkを使わないでください**。blibはサポートされていません。  
+
+もしくは、以下のようにすることで直接ライブラリを呼ぶこともできます:
+
+```bash
+source "$(blib --prefix)/path/to/the/script"
+```
+
