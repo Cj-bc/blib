@@ -1,5 +1,5 @@
 DEPSDIR := 'deps/libblib'
-TESTS := $(wildcard $(depsdir)/tests/*.bats) $(wildcard tests/*.bats)
+TESTS := $(wildcard $(DEPSDIR)/tests/*.bats) $(wildcard ./tests/*.bats)
 
 test : $(TESTS)
 	for ts in $^; do
