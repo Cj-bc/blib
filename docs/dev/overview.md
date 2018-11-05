@@ -10,7 +10,7 @@ The *import* command is provided by the framework.
 # feature
 
 Commands:
-  * 'import' command  -- import given library more easier.
+  * 'import' command  -- import given library more easier. use `import blib:<lib>`
   * `blib install <lib_name>` -- install <lib_name>
   * `blib uninstall <lib_name>` -- uninstall <lib_name>
   * `blib list` -- show all installed libraries
@@ -18,7 +18,7 @@ Commands:
   * `blib man <lib>` -- show details about <lib>
 
 Environmental vars
-  * BLIB_ROOT -- the path where all libraries installed
+  * BLIB_ROOT -- the path where all libraries installed. default: `~/.blib`
 
 Supports:
   * bash-completion for `blib`
@@ -39,13 +39,15 @@ Supports:
 
   1. bpkg
     ```
-      $ bpkg install Cj-bc/blib
-      $ echo "export BLIB_ROOT=/usr/local/lib/blib/"
+    $ bpkg install Cj-bc/blib
+    $ echo "export BLIB_ROOT=/if/you/want/some/other/path"
     ```
 
   2. homebrew
-    `$ brew insatll Cj-bc/blib/blib`
-     $ echo "export BLIB_ROOT=/usr/local/lib/blib/"
+    ```
+    $ brew insatll Cj-bc/blib/blib
+    $ echo "export BLIB_ROOT=/if/you/want/some/other/path"
+    ```
 
   3. from source
     ```
