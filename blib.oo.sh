@@ -20,7 +20,7 @@ class:blib() {
     [string] option
 
     case $option in
-      "--prefix" ) echo "$()";;
+      "--prefix" ) echo "${HOME}/.blib";;
     esac
   }
 
@@ -100,6 +100,7 @@ class:blib() {
   blib::man() {
     :
   }
+
 }
 
 Type::InitializeStatic blib
