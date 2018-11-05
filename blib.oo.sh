@@ -68,7 +68,7 @@ class:blib() {
     [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
     [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
     echo "Removing [${libname}]..."
-    rm -r "$(blib::options --prefix)/${libname}"
+    rm -rf "$(blib::options --prefix)/${libname}"
     if [ "$?" -ne 0 ]; then
       Console::WriteStdErr "$(UI.Color.Red)Fail to uninstall$(UI.Color.Default)"
     fi
