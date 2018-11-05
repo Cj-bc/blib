@@ -37,7 +37,7 @@ System::SourcePath() {
       System::SourceFile "$file" "$@"
     done
   else
-    System::SourceFile "$libPath" "$@" || System::SourceFile "${libPath}.sh" "$@"
+    System::SourceFile "$libPath" "$@" || System::SourceFile "${libPath}.sh" "$@" || System::SourceFile "${libPath}.oo.sh" "$@"
   fi
 }
 
@@ -48,6 +48,8 @@ System::ImportOne() {
   local libPath="$1"
   local __oo__importParent="${__oo__importParent-}"
   local requestedPath="$libPath"
+
+  type blib 2>/dev/null && local blibPath="$(blib --prefix)"
   shift
 
   if [[ "$requestedPath" == 'github:'* ]]
@@ -61,9 +63,16 @@ System::ImportOne() {
     requestedPath="${requestedPath:$__oo__fdLength}"
   fi
 
+  if [[ "$requestedPath" == 'blib:'* ]] # support blib
+  then
+    [[ -z "$blibPath" ]] && e="blib not installed" throw && return
+    requestedPath="${blibPath}/$requestedPath"
+  fi
+
   # [[ "$__oo__importParent" == 'http://'* || "$__oo__importParent" == 'https://'* ]] &&
   if [[ "$requestedPath" != 'http://'* && "$requestedPath" != 'https://'* ]]
   then
+    [[ -n "$blibPath" && "$requestedPath" == "$blibPath"* ]] || \
     requestedPath="${__oo__importParent}/${requestedPath}"
   fi
 
