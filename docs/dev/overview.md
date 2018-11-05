@@ -10,7 +10,7 @@ The *import* command is provided by the framework.
 # feature
 
 Commands:
-  * 'import' command  -- import given library more easier.
+  * 'import' command  -- import given library more easier. use `import blib:<lib>`
   * `blib install <lib_name>` -- install <lib_name>
   * `blib uninstall <lib_name>` -- uninstall <lib_name>
   * `blib list` -- show all installed libraries
