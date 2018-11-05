@@ -6,3 +6,5 @@ test : $(TESTS)
 		echo "testing: $ts"
 		bats "$ts" --tap
 	done
+
+.PHONY: test
