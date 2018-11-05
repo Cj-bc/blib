@@ -49,7 +49,7 @@ System::ImportOne() {
   local __oo__importParent="${__oo__importParent-}"
   local requestedPath="$libPath"
 
-  type blib 2>/dev/null && local blibPath="$(blib --prefix)"
+  type blib >/dev/null 2>&1 && local blibPath="$(blib --prefix)"
   shift
 
   if [[ "$requestedPath" == 'github:'* ]]
