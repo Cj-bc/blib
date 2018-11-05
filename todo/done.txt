@@ -2,3 +2,4 @@ x 2018-11-01 implement blib::list @1.0
 x 2018-11-01 clone only last commit inf blib::install @1.0
 x 2018-11-01 implement blib::uninstall @1.0
 x 2018-11-01 implement main @1.0
+x 2018-11-05 Add unit tests for libblib/user
