@@ -37,9 +37,9 @@ class:blib() {
         e="The library is already installed" throw
       fi
       echo -n "Checking the user [${libname%/*}]..."
-      user::is_exist "${libname%/*}"
+      user::is_exist "${libname%/*}" && echo "$(UI.powerline.OK)"
       echo -n "Checking the repo [${libname}]..."
-      user::has_repo "${libname%/*}" "${libname#*/}"
+      user::has_repo "${libname%/*}" "${libname#*/}" && echo "$(UI.powerline.OK)"
     } catch {
       [[ "${__EXCEPTION__[1]}" != "The library is already installed" ]] && echo "" # do not add newline
       Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
