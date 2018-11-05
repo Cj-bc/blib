@@ -14,11 +14,10 @@ class:user() {
     [string] name
     if [[ "$(curl "https://github.com/${name}" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
       e="User not found" throw
-      return 1
     else
       echo "$(UI.Powerline.OK)"
     fi
-    return 0
+    @return
   }
 
   # check if user has given repo
@@ -27,18 +26,14 @@ class:user() {
     [string] name
     [string] repo
 
-    try {
-      user::is_exist "$name" >/dev/null
-    } catch {
-      e="${__EXCEPTION__[1]}" throw
-      return -1
-    }
-    if [[ "$(curl "https://github.com/${name}/${repo}.git" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
+    user::is_exist "$name" >/dev/null
+
+    if [[ "$(curl "https://github.com/${name}/${repo}" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
       e="repo not found" throw
     else
       echo "$(UI.Powerline.OK)"
     fi
-    return 0
+    @return
   }
 }
 
