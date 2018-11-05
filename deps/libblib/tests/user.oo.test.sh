@@ -8,6 +8,7 @@ source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/../../bash-oo-framework/lib/oo-boo
 import util/test UI/Color util/tryCatch util/log util/exception
 import ../../libblib/user.oo.sh
 
+echo "You need network connection to test this."
 
 describe 'user::is_exist'
   it "tests it'll be passed if exist user is given."
