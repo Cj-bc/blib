@@ -5,7 +5,7 @@
 # Copyright 2018 (c) Cj-bc
 # This software is released under MIT License
 #
-# @(#) version 0.1.2
+# @(#) version 0.1.3
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
 import util/class util/log util/trycatch util/exception UI/Console UI/Color
