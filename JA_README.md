@@ -38,7 +38,8 @@
 
 # インストール方法
 
-  _どれもまだ完成していません_
+  現状、`3.ソースコードから`のみ対応しています。  
+  homebrew対応途中です。  
 
   1. bpkg
 
@@ -59,7 +60,10 @@
     ```bash
     $ git clone https://github.com/Cj-bc/blib.git
     $ cd blib
-    $ ./install.sh
+    $ make install
+    # blibのルートディレクトリ(本体等が入る。ライブラリは`root/lib`に格納される)を指定したい場合は:
+    $ make root=<your/path> install
+
     ```
 
 # blibライブラリを使用してスクリプトを作成する

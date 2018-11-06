@@ -38,7 +38,8 @@ The *import* command is provided by the framework.
 
 # installation
 
-  _Nothing supported yet_
+  `from source` is available now.  
+  I'm working on `homebrew`  
 
   1. bpkg
     ```
@@ -57,7 +58,7 @@ The *import* command is provided by the framework.
     $ git clone https://github.com/Cj-bc/blib.git
     $ cd blib
     $ make install
-    # if you want to define ROOT directory,
+    # if you want to define ROOT directory(where blib itself will be put. libraries will be installed to `ROOT/lib`),
     $ make root=<your/path> install
     ```
 
