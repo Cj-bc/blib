@@ -15,4 +15,14 @@ test : $(TESTS)
 		bats "$$t" --tap ; \
 	done
 
-.PHONY: test
+install : blib.oo.sh deps/libblib tests
+	[ -d "$(ROOT)" ] || { echo "Making directory..."; mkdir "$(ROOT)"; }; \
+	cp -r $^ $(ROOT)/ ;\
+	{ cd $(ROOT); \
+	: modify path; \
+	vim +'%s#$( cd "${BASH_SOURCE\[0\]%\/\*}" && pwd )#$(ROOT)#g' +w! +q blib.oo.sh; \
+	: install blib itself; \
+	mv blib.oo.sh blib; \
+	ln -s $(ROOT)/blib $(BINPATH); }
+
+
