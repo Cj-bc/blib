@@ -16,6 +16,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - version management
   - config file for each library
 
+
+## [v0.2.0] - 2018/11/07
+### Added
+  - Makefile
+  - `make install`/`make test`/`make uninstall`
+### Changed
+  - Default value for `BLIB_ROOT` is now `/usr/local/etc/blib`.
+    All libraries will be installed under there by default
+  -  Update README and JA_README
+### Fixed
+  - some typo
+
+
 ## [v0.1.3] - 2018/11/06 [YANKED]
 ### Added
   - Japanese README
