@@ -32,11 +32,11 @@ install : blib.oo.sh deps/libblib deps/bash-oo-framework tests
 
 
 uninstall :
-	[ -d "$(ROOT)" ] || { echo "Not installed. Aborting" >&2; exit; }; \
+	[ -d "$(ROOT)" -a -f "$(ROOT)/blib" ] || { echo "Not installed. Aborting" >&2; exit; }; \
 	echo "unlinking..."; \
 	unlink $(BINPATH); \
 	echo "removing..."; \
-	rm -r $(ROOT) && echo "Uninstalled." || echo "failed to uninstall";
+	rm -rf $(ROOT) && echo "Uninstalled." || echo "failed to uninstall";
 
 
 
