@@ -30,3 +30,14 @@ install : blib.oo.sh deps/libblib deps/bash-oo-framework tests
 	ln -s $(ROOT)/blib $(BINPATH) 2>/dev/null && echo "Installed" || echo "Fail to make symlink"; }
 
 
+
+uninstall :
+	[ -d "$(ROOT)" ] || { echo "Not installed. Aborting" >&2; exit; }; \
+	echo "unlinking..."; \
+	unlink $(BINPATH); \
+	echo "removing..."; \
+	rm -r $(ROOT) && echo "Uninstalled." || echo "failed to uninstall";
+
+
+
+.PHONY: test install uninstall
