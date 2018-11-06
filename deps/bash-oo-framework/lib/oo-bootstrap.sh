@@ -66,7 +66,7 @@ System::ImportOne() {
   if [[ "$requestedPath" == 'blib:'* ]] # support blib
   then
     [[ -z "$blibPath" ]] && e="blib not installed" throw && return
-    requestedPath="${blibPath}/$requestedPath"
+    requestedPath="${blibPath}/${requestedPath#blib:}"
   fi
 
   # [[ "$__oo__importParent" == 'http://'* || "$__oo__importParent" == 'https://'* ]] &&
