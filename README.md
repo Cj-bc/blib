@@ -20,7 +20,8 @@ The *import* command is provided by the framework.
   * 'import' command  -- import given library more easier. use `import blib:<lib>`
 
 ## Environmental vars
-  * BLIB_ROOT -- the path where all libraries installed. default: `~/.blib`
+  * BLIB_ROOT -- the path where all libraries installed. default: `/usr/local/etc/blib/lib`
+                 (For homebrew: it will be `/usr/local/Cellar/blib/<version>/lib`)
 
 ## Supports:
   * bash-completion for `blib`

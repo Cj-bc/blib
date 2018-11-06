@@ -24,7 +24,7 @@ install : blib.oo.sh deps/libblib deps/bash-oo-framework tests
 	cp -r blib.oo.sh tests $(ROOT);\
 	{ cd $(ROOT); \
 	: modify path; \
-	vim +'%s#$$( cd "$${BASH_SOURCE\[0\]%\/\*}" && pwd )#$(ROOT)#g' +w! +q blib.oo.sh >/dev/null 2>&1; \
+	vim +'%s#$$( cd "$${BASH_SOURCE\[0\]%\/\*}" && pwd )\/deps#$(ROOT)\/lib#g' +w! +q blib.oo.sh >/dev/null 2>&1; \
 	: install blib itself; \
 	mv blib.oo.sh blib; \
 	ln -s $(ROOT)/blib $(BINPATH) 2>/dev/null && echo "Installed" || echo "Fail to make symlink"; }
