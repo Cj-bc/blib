@@ -23,6 +23,6 @@ install : blib.oo.sh deps/libblib tests
 	vim +'%s#$( cd "${BASH_SOURCE\[0\]%\/\*}" && pwd )#$(ROOT)#g' +w! +q blib.oo.sh; \
 	: install blib itself; \
 	mv blib.oo.sh blib; \
-	ln -s $(ROOT)/blib $(BINPATH); }
+	ln -s $(ROOT)/blib $(BINPATH) 2>/dev/null && echo "Installed" || echo "Fail to make symlink"; }
 
 
