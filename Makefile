@@ -20,7 +20,7 @@ install : blib.oo.sh deps/libblib tests
 	cp -r $^ $(ROOT)/ ;\
 	{ cd $(ROOT); \
 	: modify path; \
-	vim +'%s#$( cd "${BASH_SOURCE\[0\]%\/\*}" && pwd )#$(ROOT)#g' +w! +q blib.oo.sh; \
+	vim +'%s#$$( cd "$${BASH_SOURCE\[0\]%\/\*}" && pwd )#$(ROOT)#g' +w! +q blib.oo.sh >/dev/null; \
 	: install blib itself; \
 	mv blib.oo.sh blib; \
 	ln -s $(ROOT)/blib $(BINPATH) 2>/dev/null && echo "Installed" || echo "Fail to make symlink"; }
