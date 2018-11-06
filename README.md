@@ -20,7 +20,8 @@ The *import* command is provided by the framework.
   * 'import' command  -- import given library more easier. use `import blib:<lib>`
 
 ## Environmental vars
-  * BLIB_ROOT -- the path where all libraries installed. default: `~/.blib`
+  * BLIB_ROOT -- the path where all libraries installed. default: `/usr/local/etc/blib/lib`
+                 (For homebrew: it will be `/usr/local/Cellar/blib/<version>/lib`)
 
 ## Supports:
   * bash-completion for `blib`
@@ -37,7 +38,8 @@ The *import* command is provided by the framework.
 
 # installation
 
-  _Nothing supported yet_
+  `from source` is available now.  
+  I'm working on `homebrew`  
 
   1. bpkg
     ```
@@ -55,7 +57,9 @@ The *import* command is provided by the framework.
     ```
     $ git clone https://github.com/Cj-bc/blib.git
     $ cd blib
-    $ ./install.sh
+    $ make install
+    # if you want to define ROOT directory(where blib itself will be put. libraries will be installed to `ROOT/lib`),
+    $ make root=<your/path> install
     ```
 
 # how to make scripts using blib libraries
@@ -63,7 +67,7 @@ The *import* command is provided by the framework.
 You should add this line at the top of your script(of course after shebang):
 
 ```bash
-source "$(blib --prefix)/bash-oo- framework/lib/oo-bootstrap.sh"
+source "$(blib --prefix)/bash-oo-framework/lib/oo-bootstrap.sh"
 ```
 
 By doing this, you can use `import` command to import libraries.  

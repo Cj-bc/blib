@@ -20,7 +20,8 @@
   * 'import'コマンド  -- スクリプトからライブラリを読み込むのに使用します。 `import blib:<lib>`の形で使用してください。
 
 ## 環境変数
-  * BLIB_ROOT -- blibのルートパスです。全てのライブラリはこの下に置かれます。 デフォルト: `~/.blib`
+  * BLIB_ROOT -- blibのルートパスです。全てのライブラリはこの下に置かれます。 デフォルト: `/usr/local/etc/blib/lib`
+                 (Homebrewの場合、`/usr/local/Cellar/blib/<version>/lib`になります)
 
 ## Supports:
   * `blib`用のbash補完
@@ -37,7 +38,8 @@
 
 # インストール方法
 
-  _どれもまだ完成していません_
+  現状、`3.ソースコードから`のみ対応しています。  
+  homebrew対応途中です。  
 
   1. bpkg
 
@@ -58,7 +60,10 @@
     ```bash
     $ git clone https://github.com/Cj-bc/blib.git
     $ cd blib
-    $ ./install.sh
+    $ make install
+    # blibのルートディレクトリ(本体等が入る。ライブラリは`root/lib`に格納される)を指定したい場合は:
+    $ make root=<your/path> install
+
     ```
 
 # blibライブラリを使用してスクリプトを作成する

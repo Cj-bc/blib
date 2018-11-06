@@ -5,7 +5,7 @@
 # Copyright 2018 (c) Cj-bc
 # This software is released under MIT License
 #
-# @(#) version 0.1.3
+# @(#) version 0.2.0
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
 import util/class util/log util/trycatch util/exception UI/Console UI/Color
@@ -20,7 +20,7 @@ class:blib() {
     [string] option
 
     case $option in
-      "--prefix" ) echo "${BLIB_ROOT:-$HOME/.blib}";;
+      "--prefix" ) echo "${BLIB_ROOT:-/usr/local/etc/blib/lib}";;
     esac
   }
 
