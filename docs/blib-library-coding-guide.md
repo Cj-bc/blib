@@ -52,14 +52,7 @@ here's some rule to make library.
   4. Do not write code outside the functions.
     There might no need to say.
     It because 'blib' will source whole library itself.
-    So, if you have something should be done at first,
-    make a function named '<library_name>.init'
-    `blib` will automatically execute them first.
-
-  5. Start functions with 'function'
-    `blib` generate documents interpreting those keywords.
-    So, if 'function' isn't exist, `blib` can't detect that function.
-    I'll try to support other way to interpret.
+    But, only initialize code for library itself is allowed.
 
 # comments
   From comment, `blib` will automatically generate text for `blib info`
