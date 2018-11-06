@@ -64,7 +64,7 @@ The *import* command is provided by the framework.
 You should add this line at the top of your script(of course after shebang):
 
 ```bash
-source "$(blib --prefix)/bash-oo- framework/lib/oo-bootstrap.sh"
+source "$(blib --prefix)/bash-oo-framework/lib/oo-bootstrap.sh"
 ```
 
 By doing this, you can use `import` command to import libraries.  
