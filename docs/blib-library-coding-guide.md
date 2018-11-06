@@ -12,7 +12,7 @@ here's some rule to make library.
 
 # initialize your code
   * you don't need write shebung (isn't it good?)
-  * At hte top, write summary of your library
+  * At the top, write summary of your library
 
   Example:
   ```
