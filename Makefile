@@ -18,7 +18,10 @@ test : $(TESTS)
 install : blib.oo.sh deps/libblib tests
 	[ -L "$(BINPATH)" -o -f "$(BINPATH)" ] && { echo "Already installed. Aborting" >&2; exit;}; \
 	[ -d "$(ROOT)" ] || { echo "Making directory..."; mkdir "$(ROOT)"; }; \
-	cp -r $^ $(ROOT)/ ;\
+	[ -d "$(ROOT)/lib" ] || { echo "Making directory..."; mkdir "$(ROOT)/lib"; }; \
+	echo "Copying files..."; \
+	cp -r deps/libblib deps/bash-oo-framework $(ROOT)/lib; \
+	cp -r blib.oo.sh tests $(ROOT);\
 	{ cd $(ROOT); \
 	: modify path; \
 	vim +'%s#$$( cd "$${BASH_SOURCE\[0\]%\/\*}" && pwd )#$(ROOT)#g' +w! +q blib.oo.sh >/dev/null 2>&1; \
