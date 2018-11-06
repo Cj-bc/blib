@@ -56,7 +56,9 @@ The *import* command is provided by the framework.
     ```
     $ git clone https://github.com/Cj-bc/blib.git
     $ cd blib
-    $ ./install.sh
+    $ make install
+    # if you want to define ROOT directory,
+    $ make root=<your/path> install
     ```
 
 # how to make scripts using blib libraries
