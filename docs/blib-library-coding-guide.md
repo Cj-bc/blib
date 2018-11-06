@@ -1,5 +1,6 @@
 Any argunments/comments/issues/PRs are really WELCOME.
 Please create issue/or join exist issue to discuss the style!!
+
 ----
 
 To make good library, and to avoid conflict with other  library,
@@ -41,7 +42,7 @@ here's some rule to make library.
         simple word name: "testfunc"
       are not good when we think about conflict.
       Best practice is to put your library name.
-        "get" -> "Tkinsh.get"
+        "get" -> "Tkinsh::get"
 
   2. Put Library name before environment variable.
       The same as 1.
