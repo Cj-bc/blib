@@ -16,6 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - version management
   - config file for each library
 
+## [v0.1.3] - 2018/11/06 [YANKED]
+### Added
+  - Japanese README
+  - Japanese coding guide
+### Changed
+  - Coding guide using blib libraries
+### Fixed
+  - some typo
+  - Typo of DEFAULT OF BLIB_ROOT
+
+
 ## [v0.1.2] - 2018/11/05 [YANKED]
 ### Added
   - variable `BLIB_ROOT`: set root directory for blib. default: $HOME/.blib

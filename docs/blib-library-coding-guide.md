@@ -1,28 +1,19 @@
 Any argunments/comments/issues/PRs are really WELCOME.
 Please create issue/or join exist issue to discuss the style!!
+
 ----
 
 To make good library, and to avoid conflict with other  library,
 here's some rule to make library.
 
 # before coding
-  Before coding, make sure your library name is start with 'lib' and has readable name.
-
-  libmath.sh
-  ---====---
-   |  |   |
-   |  |   +---- suffix '.sh'
-   |  +--- your library name
-   +-- prefix 'lib'
-
-
-  And as this is library, option(-something) is not good.
+  As this is library, option(-something) is not good.
   Please design simple
 
 
 # initialize your code
   * you don't need write shebung (isn't it good?)
-  * At hte top, write summary of your library
+  * At the top, write summary of your library
 
   Example:
   ```
@@ -51,7 +42,7 @@ here's some rule to make library.
         simple word name: "testfunc"
       are not good when we think about conflict.
       Best practice is to put your library name.
-        "get" -> "Tkinsh.get"
+        "get" -> "Tkinsh::get"
 
   2. Put Library name before environment variable.
       The same as 1.
@@ -62,14 +53,7 @@ here's some rule to make library.
   4. Do not write code outside the functions.
     There might no need to say.
     It because 'blib' will source whole library itself.
-    So, if you have something should be done at first,
-    make a function named '<library_name>.init'
-    `blib` will automatically execute them first.
-
-  5. Start functions with 'function'
-    `blib` generate documents interpreting those keywords.
-    So, if 'function' isn't exist, `blib` can't detect that function.
-    I'll try to support other way to interpret.
+    But, only initialize code for library itself is allowed.
 
 # comments
   From comment, `blib` will automatically generate text for `blib info`
@@ -99,13 +83,6 @@ and `blib man`
     ```
 
 
-# repository managing
+# about repository
   Please manage your library on Github.
   I'll try to support other way, but now, nothing is supported but Github.
-
-  repository name should form:
-
-  libtkinsh
-  -+-======
-   |    |------ your library name
-   +------ prefix 'lib'
