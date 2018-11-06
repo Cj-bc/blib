@@ -20,7 +20,8 @@
   * 'import'コマンド  -- スクリプトからライブラリを読み込むのに使用します。 `import blib:<lib>`の形で使用してください。
 
 ## 環境変数
-  * BLIB_ROOT -- blibのルートパスです。全てのライブラリはこの下に置かれます。 デフォルト: `~/.blib`
+  * BLIB_ROOT -- blibのルートパスです。全てのライブラリはこの下に置かれます。 デフォルト: `/usr/local/etc/blib/lib`
+                 (Homebrewの場合、`/usr/local/Cellar/blib/<version>/lib`になります)
 
 ## Supports:
   * `blib`用のbash補完

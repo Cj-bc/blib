@@ -49,7 +49,7 @@ System::ImportOne() {
   local __oo__importParent="${__oo__importParent-}"
   local requestedPath="$libPath"
 
-  type blib >/dev/null 2>&1 && local blibPath="${BLIB_ROOT:-~/.blib}"
+  type blib >/dev/null 2>&1 && local blibPath="${BLIB_ROOT:-/usr/local/etc/blib/lib}"
   shift
 
   if [[ "$requestedPath" == 'github:'* ]]
@@ -66,7 +66,7 @@ System::ImportOne() {
   if [[ "$requestedPath" == 'blib:'* ]] # support blib
   then
     [[ -z "$blibPath" ]] && e="blib not installed" throw && return
-    requestedPath="${blibPath}/$requestedPath"
+    requestedPath="${blibPath}/${requestedPath#blib:}"
   fi
 
   # [[ "$__oo__importParent" == 'http://'* || "$__oo__importParent" == 'https://'* ]] &&
