@@ -6,17 +6,7 @@ To make good library, and to avoid conflict with other  library,
 here's some rule to make library.
 
 # before coding
-  Before coding, make sure your library name is start with 'lib' and has readable name.
-
-  libmath.sh
-  ---====---
-   |  |   |
-   |  |   +---- suffix '.sh'
-   |  +--- your library name
-   +-- prefix 'lib'
-
-
-  And as this is library, option(-something) is not good.
+  As this is library, option(-something) is not good.
   Please design simple
 
 
@@ -99,13 +89,6 @@ and `blib man`
     ```
 
 
-# repository managing
+# about repository
   Please manage your library on Github.
   I'll try to support other way, but now, nothing is supported but Github.
-
-  repository name should form:
-
-  libtkinsh
-  -+-======
-   |    |------ your library name
-   +------ prefix 'lib'
