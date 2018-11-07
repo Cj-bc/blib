@@ -35,6 +35,6 @@ setup() {
   [[ -d "${tmpdir}/libtar" ]]
 }
 teardown() {
-  rm "$tmp"
+  rm -rf "$tmpdir"
 }
 
