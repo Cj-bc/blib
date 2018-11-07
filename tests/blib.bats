@@ -23,8 +23,6 @@ setup() {
 @test "check option: --prefix" {
   eval 'run $BLIB --prefix'
 
-  echo "${lines[0]}" >&3
-  echo "${BLIB_ROOT:-/usr/local/etc/blib/lib}" >&3
   [[ "$status" -eq 0 ]]
   [[ "${lines[0]}" = "${BLIB_ROOT:-/usr/local/etc/blib/lib}" ]]
 }
