@@ -14,7 +14,7 @@ setup() {
 
   # temp dir
 
-  tmpdir="${BATS_TMPDIR}/$(date +%y-%m-%d-%H-%M-%S)_lib.tmp"
+  tmpdir="${BATS_TMPDIR}/blib_bats_$(date +%y-%m-%d-%H-%M-%S)_lib.tmp"
   mkdir "$tmpdir"
 
 }
