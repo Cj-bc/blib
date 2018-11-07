@@ -1,12 +1,12 @@
-DEPSDIR := ./deps/libblib
-TESTS := $(wildcard $(DEPSDIR)/tests/*.bats) $(wildcard ./tests/*.bats)
-BINPATH := /usr/local/bin/blib
-
 ifdef root
   ROOT := $(root)
 else
   ROOT := /usr/local/etc/blib
 endif
+
+DEPSDIR := $(ROOT)/lib
+TESTS := $(wildcard $(DEPSDIR)/**/tests/*.bats) $(wildcard ./tests/*.bats)
+BINPATH := /usr/local/bin/blib
 
 test : $(TESTS)
 	@LIST="$^"; \
