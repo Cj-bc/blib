@@ -44,14 +44,14 @@ class:blib() {
       user::has_repo "${libname%/*}" "${libname#*/}" && echo "$(UI.powerline.OK)"
     } catch {
       [[ "${__EXCEPTION__[1]}" != "The library is already installed" ]] && echo "" # do not add newline
-      Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
+      e="${__EXCEPTION__[1]}" throw
       return
     }
 
     echo "Installing [${libname}]..."
     git clone --depth 1 -- "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
-      Console::WriteStdErr "$(UI.Color.Red)Fail to clone.$(UI.Color.Default)"
+      e="$(UI.Color.Red)Fail to clone.$(UI.Color.Default)" throw
       return
     fi
     echo "Done."
@@ -70,7 +70,7 @@ class:blib() {
     echo "Removing [${libname}]..."
     rm -rf "$(blib::options --prefix)/${libname}"
     if [ "$?" -ne 0 ]; then
-      Console::WriteStdErr "$(UI.Color.Red)Fail to uninstall$(UI.Color.Default)"
+      e="$(UI.Color.Red)Fail to uninstall$(UI.Color.Default)" throw
     fi
     echo "Done."
 
@@ -109,11 +109,15 @@ function main() {
   [[ ! -d "$(blib::options --prefix)" ]] && { echo "Initialize blib directory"; mkdir "$(blib::options --prefix)"; echo "done."; }
   local cmd="$1"
   shift || true
-  case "$cmd" in
-    list|install|uninstall|info|man|help ) eval 'blib::$cmd' $@;;
-    -* ) blib::options $cmd;;
-    * ) blib::options --help;;
-  esac
+  try {
+    case "$cmd" in
+      list|install|uninstall|info|man|help ) eval 'blib::$cmd' $@;;
+      -* ) blib::options $cmd;;
+      * ) blib::options --help;;
+    esac
+  } catch {
+    Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
+  }
 }
 
 main $@
