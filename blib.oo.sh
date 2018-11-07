@@ -30,8 +30,8 @@ class:blib() {
     [string] libname
 
     # throw exception if the libname is wrong.
-    [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
     try {
+      [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw
       # 1. Does the same library already installed?
       # 2. Does user exist?
       # 3. Does repository exist?
