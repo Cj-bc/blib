@@ -122,4 +122,10 @@ function main() {
   return 0 # EX_SUCCESS
 }
 
-main $@
+try {
+  main $@
+  e="$?" throw
+} catch {
+  echo "I've got this exception: ${__EXCEPTION__[@]}"
+  exit ${__EXCEPTION__[1]}
+}
