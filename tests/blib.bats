@@ -11,7 +11,14 @@ setup() {
   elif [ -f './blib' ]; then
     BLIB='./blib'
   fi
+
+  # temp dir
+
+  tmpdir="${BATS_TMPDIR}/$(date +%y-%m-%d-%H-%M-%S)_lib.tmp"
+  mkdir "$tmpdir"
+
 }
+
 
 @test "check option: --prefix" {
   eval 'run $BLIB --prefix'
@@ -24,6 +31,6 @@ setup() {
 
 
 teardown() {
-:
+  rm "$tmp"
 }
 
