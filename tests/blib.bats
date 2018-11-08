@@ -68,6 +68,13 @@ setup() {
 }
 
 
+@test "blib list" {
+   eval 'run $BLIB list'
+
+   [[ "$status" -eq 0 ]]
+}
+
+
 teardown() {
   rm -rf "$tmpdir"
 }
