@@ -4,8 +4,12 @@ else
   ROOT := /usr/local/etc/blib
 endif
 
-DEPSDIR := $(ROOT)/lib
-TESTS := $(wildcard $(DEPSDIR)/**/tests/*.bats) $(wildcard ./tests/*.bats)
+ifdef LIB
+else
+  LIB := lib
+endif
+
+TESTS := $(wildcard $(ROOT)/$(LIB)/libblib/tests/*.bats $(ROOT)/tests/*.bats)
 BINPATH := /usr/local/bin/blib
 
 test : $(TESTS)
