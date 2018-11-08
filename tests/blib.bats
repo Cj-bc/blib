@@ -35,6 +35,17 @@ setup() {
   [[ "$?" -eq 0 ]]
   [[ -d "${tmpdir}/libtar" ]]
 }
+
+@test "blib install (user not found)" {
+  local result
+  local status
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install nonexistnonexistnonexist 2>&1 >/dev/null')" || status="$?"
+
+  [[ "$status" -eq 65 ]] # EX_DATAERR
+  [[ "$result" = 'libname should form <user>/<repo>' ]]
+  [[ ! -d "${tmpdir}/libtar" ]]
+}
+
 teardown() {
   rm -rf "$tmpdir"
 }
