@@ -36,7 +36,7 @@ setup() {
   [[ -d "${tmpdir}/libtar" ]]
 }
 
-@test "blib install (user not found)" {
+@test "blib install (invalid repo name)" {
   local result
   local status
   result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install nonexistnonexistnonexist 2>&1 >/dev/null')" || status="$?"
