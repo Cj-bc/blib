@@ -117,9 +117,9 @@ function main() {
     esac
   } catch {
     Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
-    return 65 # EX_DATAERR
+    @return:val 65
   }
-  return 0 # EX_SUCCESS
+  @return:val 0
 }
 
 try {
