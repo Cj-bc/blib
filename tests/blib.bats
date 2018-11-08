@@ -46,6 +46,28 @@ setup() {
   [[ ! -d "${tmpdir}/libtar" ]]
 }
 
+@test "blib install (User not found)" {
+  local result
+  local status
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install nonexistnonexistnonexist/hoge 2>&1 >/dev/null')" || status="$?"
+
+  [[ "$status" -eq 65 ]] # EX_DATAERR
+  [[ "$result" = 'User not found' ]]
+  [[ ! -d "${tmpdir}/libtar" ]]
+}
+
+
+@test "blib install (repo not found)" {
+  local result
+  local status
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install Cj-bc/IdontHaveIt 2>&1 >/dev/null')" || status="$?"
+
+  [[ "$status" -eq 65 ]] # EX_DATAERR
+  [[ "$result" = 'repo not found' ]]
+  [[ ! -d "${tmpdir}/libtar" ]]
+}
+
+
 teardown() {
   rm -rf "$tmpdir"
 }
