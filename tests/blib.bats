@@ -29,7 +29,8 @@ setup() {
 
 
 @test "blib install" {
-  eval 'BLIB_ROOT="${tmpdir}" $BLIB install Cj-bc/libtar'
+  local status
+  eval 'BLIB_ROOT="${tmpdir}" $BLIB install Cj-bc/libtar' || status="$?"
 
   [[ "$?" -eq 0 ]]
   [[ -d "${tmpdir}/libtar" ]]
