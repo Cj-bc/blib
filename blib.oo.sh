@@ -126,6 +126,5 @@ try {
   main $@
   e="$?" throw
 } catch {
-  echo "EXCEPTIONS: ${__EXCEPTION__[@]}"  # debug
   exit ${__EXCEPTION__[1]}
 }

@@ -105,7 +105,7 @@ skip
   local result
   result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall ../../libtar 2>&1')" || status="$?"
 
-  echo "invalid lib name status: $status"
+  echo "invalid lib name status: $status" # DEBUG
   [[ "$status" -eq 65 ]]
   [[ "$result" = "invalid library name." ]]
   [[ -d "${tmpdir}/libtar" ]]
@@ -117,7 +117,7 @@ skip
   local result
   eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall libtar 2>&1' || status="$?"
 
-  echo "not installed lib status: $status"
+  echo "not installed lib status: $status" # DEBUG
   [[ "$status" -eq 65 ]]
   [[ "$result" = "library libtar is not installed." ]]
 }
