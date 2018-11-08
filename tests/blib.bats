@@ -99,6 +99,29 @@ skip
 }
 
 
+@test "blib uninstall(invalid library name)" {
+  eval 'BLIB_ROOT=${tmpdir} $BLIB install Cj-bc/libtar' # install library to uninstall
+  local status
+  local result
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall ../../libtar 2>&1')" || status="$?"
+
+  echo "invalid lib name status: $status"
+  [[ "$status" -eq 65 ]]
+  [[ "$result" = "invalid library name." ]]
+  [[ -d "${tmpdir}/libtar" ]]
+}
+
+
+@test "blib uninstall(library libtar is not installed.)" {
+  local status
+  local result
+  eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall ../../libtar 2>&1' || status="$?"
+
+  echo "not installed lib status: $status"
+  [[ "$status" -eq 65 ]]
+  [[ "$result" = "library libtar is not installed." ]]
+}
+
 teardown() {
   rm -rf "$tmpdir"
 }
