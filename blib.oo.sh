@@ -74,7 +74,7 @@ class:blib() {
     fi
     echo "Done."
 
-    return 0
+    return
   }
 
   # list all installed libraries.
@@ -126,5 +126,6 @@ try {
   main $@
   e="$?" throw
 } catch {
+  echo "EXCEPTIONS: ${__EXCEPTION__[@]}"  # debug
   exit ${__EXCEPTION__[1]}
 }
