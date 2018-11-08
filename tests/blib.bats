@@ -23,7 +23,6 @@ setup() {
 
 # shellcheck disable=SC1083
 @test "check option: --prefix" {
-skip
   eval 'run $BLIB --prefix'
 
   # shellcheck disable=SC2154
@@ -34,7 +33,6 @@ skip
 
 
 @test "blib install" {
-skip
   local status
   eval 'BLIB_ROOT="${tmpdir}" $BLIB install Cj-bc/libtar' || status="$?"
 
@@ -43,7 +41,6 @@ skip
 }
 
 @test "blib install (invalid repo name)" {
-skip
   local result
   local status
   result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install nonexistnonexistnonexist 2>&1 >/dev/null')" || status="$?"
@@ -54,7 +51,6 @@ skip
 }
 
 @test "blib install (User not found)" {
-skip
   local result
   local status
   result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install nonexistnonexistnonexist/hoge 2>&1 >/dev/null')" || status="$?"
@@ -66,7 +62,6 @@ skip
 
 
 @test "blib install (repo not found)" {
-skip
   local result
   local status
   result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install Cj-bc/IdontHaveIt 2>&1 >/dev/null')" || status="$?"
@@ -78,7 +73,6 @@ skip
 
 
 @test "blib list" {
-skip
    eval 'run $BLIB list'
 
    [[ "$status" -eq 0 ]]
@@ -86,7 +80,6 @@ skip
 
 
 @test "blib uninstall" {
-skip
   eval 'BLIB_ROOT=${tmpdir} $BLIB install Cj-bc/libtar' # install library to uninstall
   local status
   local result
