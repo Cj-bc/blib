@@ -115,7 +115,7 @@ skip
 @test "blib uninstall(library libtar is not installed.)" {
   local status
   local result
-  eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall ../../libtar 2>&1' || status="$?"
+  eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall libtar 2>&1' || status="$?"
 
   echo "not installed lib status: $status"
   [[ "$status" -eq 65 ]]
