@@ -1,4 +1,5 @@
 #!/usr/bin/env bats
+# shellcheck disable=SC2034,SC1089
 #
 #
 # Copyright 2018 (c) Cj-bc
@@ -20,10 +21,13 @@ setup() {
 }
 
 
+# shellcheck disable=SC1083
 @test "check option: --prefix" {
   eval 'run $BLIB --prefix'
 
+  # shellcheck disable=SC2154
   [[ "$status" -eq 0 ]]
+  # shellcheck disable=SC2154
   [[ "${lines[0]}" = "${BLIB_ROOT:-/usr/local/etc/blib/lib}" ]]
 }
 
