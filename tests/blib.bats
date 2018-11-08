@@ -108,9 +108,10 @@ setup() {
 @test "blib uninstall(library libtar is not installed.)" {
   local status
   local result
-  eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall libtar 2>&1' || status="$?"
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall libtar 2>&1')" || status="$?"
 
   echo "not installed lib status: $status" # DEBUG
+  echo "not installed lib result: '$result'" # DEBUG
   [[ "$status" -eq 65 ]]
   [[ "$result" = "library libtar is not installed." ]]
 }
