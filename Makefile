@@ -14,7 +14,7 @@ BINPATH := /usr/local/bin/blib
 
 test : $(TESTS)
 	@LIST="$^"; \
-	for t in "$$LIST"; do \
+	for t in $$LIST; do \
 		echo "testing: $$t"; \
 		bats "$$t" --tap ; \
 	done
