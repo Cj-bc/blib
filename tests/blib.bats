@@ -75,6 +75,19 @@ setup() {
 }
 
 
+@test "blib uninstall" {
+  eval 'BLIB_ROOT=${tmpdir} $BLIB install Cj-bc/libtar' # install library to uninstall
+  local status
+  local result
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall libtar 2>/dev/null' | tail -n 1)" || status="$?"
+
+  echo "result: '$result'"
+  [[ "$status" -eq 0 ]]
+  [[ "$result" = 'Done.' ]]
+  [[ ! -d "${tmpdir}/libtar" ]]
+}
+
+
 teardown() {
   rm -rf "$tmpdir"
 }
