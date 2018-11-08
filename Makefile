@@ -17,7 +17,9 @@ test : $(TESTS)
 	for t in $$LIST; do \
 		echo "testing: $$t"; \
 		bats "$$t" --tap ; \
-	done
+	done; \
+	echo "All test passed ;)"
+
 
 install : blib.oo.sh deps/libblib deps/bash-oo-framework tests
 	[ -L "$(BINPATH)" -o -f "$(BINPATH)" ] && { echo "Already installed. Aborting" >&2; exit;}; \
