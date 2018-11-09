@@ -25,6 +25,7 @@ install : blib.oo.sh deps/libblib deps/bash-oo-framework tests
 	if [ "$(FORCE_INSTALL)" != "true" ]; then \
 		[ -L "$(BINPATH)" -o -f "$(BINPATH)" ] && { echo "Already installed. Aborting" >&2; exit;}; \
 	fi; \
+	[ -L "$(BINPATH)" ] && echo "Unlink previous bin..." && unlink $(BINPATH); \
 	[ -d "$(ROOT)" ] || { echo "Making directory..."; mkdir "$(ROOT)"; }; \
 	[ -d "$(ROOT)/lib" ] || { echo "Making directory..."; mkdir "$(ROOT)/lib"; }; \
 	echo "Copying files..."; \
@@ -37,7 +38,6 @@ install : blib.oo.sh deps/libblib deps/bash-oo-framework tests
 		vim +'%s/#\/usr\/local\/etc\/blib\/lib#$(ROOT)\/lib#g' +w! +q tests/blib.bats >/dev/null 2>&1; \
 		: install blib itself; \
 		mv blib.oo.sh blib; \
-		[ -L "$(BINPATH)" ] && echo "Unlink previous bin..." && unlink $(BINPATH); \
 		ln -s $(ROOT)/blib $(BINPATH) 2>/dev/null && echo "Installed" || echo "Fail to make symlink"; }
 
 
