@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - config file for each library
 
 
+## [v0.2.3] - 2018/11/09
+### Fixed
+  - Don't leave broken symlink of `blib` bin(`/usr/local/bin/blib)` in `make install`
+  - `make install` works fine
+
+
 ## [v0.2.2] - 2018/11/09
 ### Changed
   - Add 'FORCE_INSTALL' option to force install. You can force to install again

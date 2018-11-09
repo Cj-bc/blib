@@ -5,7 +5,7 @@
 # Copyright 2018 (c) Cj-bc
 # This software is released under MIT License
 #
-# @(#) version 0.2.2
+# @(#) version 0.2.3
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
 import util/class util/log util/trycatch util/exception UI/Console UI/Color
@@ -38,12 +38,11 @@ class:blib() {
       if [[ "$(blib::list)" =~ .*\s*${libname#*/}\s*.* ]]; then
         e="The library is already installed" throw
       fi
-      echo -n "Checking the user [${libname%/*}]..."
+      echo "Checking the user [${libname%/*}]..."
       user::is_exist "${libname%/*}"
-      echo -n "Checking the repo [${libname}]..."
+      echo "Checking the repo [${libname}]..."
       user::has_repo "${libname%/*}" "${libname#*/}"
     } catch {
-      [[ "${__EXCEPTION__[1]}" != "The library is already installed" ]] && echo "" # do not add newline
       e="${__EXCEPTION__[1]}" throw
       return
     }
