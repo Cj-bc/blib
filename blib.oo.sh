@@ -5,7 +5,7 @@
 # Copyright 2018 (c) Cj-bc
 # This software is released under MIT License
 #
-# @(#) version 0.2.0
+# @(#) version 0.2.1
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
 import util/class util/log util/trycatch util/exception UI/Console UI/Color
@@ -30,8 +30,8 @@ class:blib() {
     [string] libname
 
     # throw exception if the libname is wrong.
-    [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw && return
     try {
+      [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw
       # 1. Does the same library already installed?
       # 2. Does user exist?
       # 3. Does repository exist?
@@ -39,19 +39,19 @@ class:blib() {
         e="The library is already installed" throw
       fi
       echo -n "Checking the user [${libname%/*}]..."
-      user::is_exist "${libname%/*}" && echo "$(UI.powerline.OK)"
+      user::is_exist "${libname%/*}"
       echo -n "Checking the repo [${libname}]..."
-      user::has_repo "${libname%/*}" "${libname#*/}" && echo "$(UI.powerline.OK)"
+      user::has_repo "${libname%/*}" "${libname#*/}"
     } catch {
       [[ "${__EXCEPTION__[1]}" != "The library is already installed" ]] && echo "" # do not add newline
-      Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
+      e="${__EXCEPTION__[1]}" throw
       return
     }
 
     echo "Installing [${libname}]..."
     git clone --depth 1 -- "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
-      Console::WriteStdErr "$(UI.Color.Red)Fail to clone.$(UI.Color.Default)"
+      e="$(UI.Color.Red)Fail to clone.$(UI.Color.Default)" throw
       return
     fi
     echo "Done."
@@ -64,17 +64,17 @@ class:blib() {
   blib::uninstall() {
     [string] libname
 
-    [[ ! "$(realpath $(blib::options --prefix)/${libname})" =~ $(blib::options --prefix)/* ]] && e="invalid library name." throw && return
+    [[ ! "$(realpath $(blib::options --prefix)/${libname})" =~ $(blib::options --prefix)/* ]] && e="invalid library name." throw
     [[ "$libname" =~ .*/.* ]] && libname=${libname#*/} # remove username if it's appended
-    [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw && return
+    [[ ! -d "$(blib::options --prefix)/${libname}" ]] && e="library ${libname} is not installed." throw
     echo "Removing [${libname}]..."
     rm -rf "$(blib::options --prefix)/${libname}"
     if [ "$?" -ne 0 ]; then
-      Console::WriteStdErr "$(UI.Color.Red)Fail to uninstall$(UI.Color.Default)"
+      e="$(UI.Color.Red)Fail to uninstall$(UI.Color.Default)" throw
     fi
     echo "Done."
 
-    return 0
+    return
   }
 
   # list all installed libraries.
@@ -109,11 +109,22 @@ function main() {
   [[ ! -d "$(blib::options --prefix)" ]] && { echo "Initialize blib directory"; mkdir "$(blib::options --prefix)"; echo "done."; }
   local cmd="$1"
   shift || true
-  case "$cmd" in
-    list|install|uninstall|info|man|help ) eval 'blib::$cmd' $@;;
-    -* ) blib::options $cmd;;
-    * ) blib::options --help;;
-  esac
+  try {
+    case "$cmd" in
+      list|install|uninstall|info|man|help ) eval 'blib::$cmd' $@;;
+      -* ) blib::options $cmd;;
+      * ) blib::options --help;;
+    esac
+  } catch {
+    Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
+    @return:val 65
+  }
+  @return:val 0
 }
 
-main $@
+try {
+  main $@
+  e="$?" throw
+} catch {
+  exit ${__EXCEPTION__[1]}
+}

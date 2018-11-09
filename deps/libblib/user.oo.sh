@@ -12,7 +12,9 @@ class:user() {
   # @exception "User not found"
   user::is_exist() {
     [string] name
-    if [[ "$(curl "https://github.com/${name}" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
+    local status
+    status="$(curl "https://github.com/${name}" -o /dev/null -w '%{http_code}' -s)"
+    if [[ "$?" -ne 0 || "$status" = "404" ]]; then
       e="User not found" throw
     fi
     @return
@@ -26,7 +28,9 @@ class:user() {
 
     user::is_exist "$name" >/dev/null
 
-    if [[ "$(curl "https://github.com/${name}/${repo}" -o /dev/null -w '%{http_code}' -s)" = "404" ]]; then
+    local status
+    status="$(curl "https://github.com/${name}/${repo}" -o /dev/null -w '%{http_code}' -s)"
+    if [[ "$?" -ne 0 || "$status" = "404" ]]; then
       e="repo not found" throw
     fi
     @return

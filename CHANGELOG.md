@@ -17,6 +17,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - config file for each library
 
 
+## [v0.2.1] - 2018/11/09
+### Added
+  - system test for `blib.oo.sh`
+
+### Changed
+  - Use `blib --prefix` in libblib test
+
+### Fixed
+  - `make test` works fine
+  - Left any exception after script excecution
+  - Treat exceptions well
+  - Fix some test cases
+
 ## [v0.2.0] - 2018/11/07
 ### Added
   - Makefile
