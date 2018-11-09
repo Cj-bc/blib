@@ -1,3 +1,5 @@
+English: [README.md]
+
 # blib
   blibは、bash script用のライブラリマネージャーです。
   パッケージマネージャーではありません。（bash用のパッケージマネージャー: [bpkg/bpkg](https://github.com/bpkg/bpkg))

@@ -1,3 +1,5 @@
+日本語: [JA_README.md]
+
 # blib
   a library manager for bash script.
   Not a Package Manager. ( package manager for bash is here,[bpkg/bpkg](https://github.com/bpkg/bpkg))
