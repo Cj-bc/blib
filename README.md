@@ -62,6 +62,11 @@ The *import* command is provided by the framework.
     $ make install
     # if you want to define ROOT directory(where blib itself will be put. libraries will be installed to `ROOT/lib`),
     $ make root=<your/path> install
+    # if you want to re-install without uninstall, set `FORCE_INSTALL` to 'true'.
+    # by default, `make install` will fail if `blib` command is available.
+    $ make FORCE_INSTALL=true install
+    # Of cource, you can combine both
+    $ make root=<your/path> FORCE_INSTALL=true install
     ```
 
 # how to make scripts using blib libraries

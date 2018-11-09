@@ -65,7 +65,11 @@ English: [README.md]
     $ make install
     # blibのルートディレクトリ(本体等が入る。ライブラリは`root/lib`に格納される)を指定したい場合は:
     $ make root=<your/path> install
-
+    # アンインストールせずに再インストールしたい場合、`FORCE_INSTALL`を`true`にしてください。
+    # デフォルトでは、`blib`コマンドが存在している場合は`make install`は失敗します。
+    $ make FORCE_INSTALL=true install
+    # もちろん、上記二つを組み合わせることもできます。
+    $ make root=<your/path> FORCE_INSTALL=true install
     ```
 
 # blibライブラリを使用してスクリプトを作成する

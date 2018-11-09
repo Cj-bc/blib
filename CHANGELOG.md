@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - config file for each library
 
 
+## [v0.2.2] - 2018/11/09
+### Changed
+  - Add 'FORCE_INSTALL' option to force install. You can force to install again
+### Fixed
+  - Homebrew installation works fine(I hope)
+
+
 ## [v0.2.1] - 2018/11/09
 ### Added
   - system test for `blib.oo.sh`
@@ -29,6 +36,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - Left any exception after script excecution
   - Treat exceptions well
   - Fix some test cases
+
 
 ## [v0.2.0] - 2018/11/07
 ### Added
