@@ -22,7 +22,7 @@ test : $(TESTS)
 
 
 install : blib.oo.sh deps/libblib deps/bash-oo-framework tests
-	[ -L "$(BINPATH)" -o -f "$(BINPATH)" ] && { echo "Already installed. Aborting" >&2; exit;}; \
+	[ -L "$(BINPATH)" -o -f "$(BINPATH)" -a "$(FOCE_INSTALL)" != "true" ] && { echo "Already installed. Aborting" >&2; exit;}; \
 	[ -d "$(ROOT)" ] || { echo "Making directory..."; mkdir "$(ROOT)"; }; \
 	[ -d "$(ROOT)/lib" ] || { echo "Making directory..."; mkdir "$(ROOT)/lib"; }; \
 	echo "Copying files..."; \
