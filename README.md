@@ -85,3 +85,56 @@ Or, you can source libraries directly by doing:
 ```bash
 source "$(blib --prefix)/path/to/the/script"
 ```
+
+
+# Make library available for blib
+
+If you want to make your library available for blib, please make formula repository.
+(I took this way so that we can make formula of other's libraries)
+It should be hosted on Github (for now).
+
+## make formula
+
+The formula should be named as '<library_name>.formula'
+Repository  should be named as 'blib-<library_name>' (like homebrew)
+
+### form of formula
+
+Example:
+```
+class:Library() {
+  @required public string name="libhttp"
+  @required public string url="https://github.com/Cj-bc/libhttp.git"
+  @required public array scripts push "libhttp.sh"
+            public array tests push "tests"
+            public string version="v1.2.3"
+            public string description="use HTTP method easier"
+            public array dependencies=( "libhttp" )
+
+  Library.test() {
+    make test
+  }
+}
+
+Type::InitializeStatic Library
+```
+
+tests are not requirement so that we can write formula for 
+#### properties
+
+|properties    | description                                                  | is needed? |
+|:-:           |:-:                                                           |:-:         |
+| name         | the name of repository                                       | O          |
+| url          | the url where this library is published                      | O          |
+| scripts      | library scripts                                              | O          |
+| tests        | test scripts. I recommend to use bats or oo-framework's test | X          |
+| dependencies | dependencies for the library. array.                         | X          |
+| description  | description for the library                                  | X          |
+| version      | the version to install.If it's empty, HEAD will be used      | X          |
+
+#### methods
+
+|methods          | description                         | is needed? |
+|:-:              |:-:                                  |:-:         |
+| Library.test    | will be executed to test library    | X          |
+
