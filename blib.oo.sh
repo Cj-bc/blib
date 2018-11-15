@@ -51,7 +51,7 @@ class:blib() {
     echo "Getting formula [${libname}]..."
     git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
-      e="$(UI.Color.Red)Fail to clone formula.$(UI.Color.Default)" throw
+      e="Fail to clone formula." throw
       return
     fi
     echo "Done."
