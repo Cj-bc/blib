@@ -41,16 +41,17 @@ class:blib() {
       echo "Checking the user [${libname%/*}]..."
       user::is_exist "${libname%/*}"
       echo "Checking the repo [${libname}]..."
-      user::has_repo "${libname%/*}" "${libname#*/}"
+      user::has_repo "${libname%/*}" "blib-${libname#*/}"
     } catch {
       e="${__EXCEPTION__[1]}" throw
       return
     }
 
-    echo "Installing [${libname}]..."
-    git clone --depth 1 -- "https://github.com/${libname}.git" "$(blib::options --prefix)/${libname#*/}" > /dev/null 2>&1
+    # get formula first
+    echo "Getting formula [${libname}]..."
+    git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
-      e="$(UI.Color.Red)Fail to clone.$(UI.Color.Default)" throw
+      e="$(UI.Color.Red)Fail to clone formula.$(UI.Color.Default)" throw
       return
     fi
     echo "Done."
