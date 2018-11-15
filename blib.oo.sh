@@ -54,6 +54,27 @@ class:blib() {
       e="Fail to clone formula." throw
       return
     fi
+
+    # install library itself
+    try {
+      cd "$(blib::options --prefix)/../formula/${libname#*/}"
+      source "${libname#*/}.formula"
+      url="$(Library url)"
+      [ "$(Library version)" = "" ]&& local version="HEAD" || local version="$(Library version)"
+      echo "Getting library [${url}]..."
+      git clone --depth 1 -b ${version} -- "${url}" "$(blib::options --prefix)/../Celler/${libname#*/}/${version}" \
+        || e="couldn't clone repository: ${url}" throw
+      Library scripts forEach ' \
+                               echo -n "Linking ${item}..."; \
+                               ln -s ${item} "$(blib  --prefix)/${libname#*/}/" \
+                                  && echo "" \
+                                  || { echo "failed"; e="fail to link ${item}" throw;} \
+                              '
+    } catch {
+      Console::WriteStdErr "${__EXCEPTION__[1]}"
+      Console::WriteStdErr "please ask maintainer of this formula."
+      e="fail to install" throw
+    }
     echo "Done."
 
     return 0
