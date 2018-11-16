@@ -71,6 +71,19 @@ setup() {
 }
 
 
+@test "blib install(wrong formula.)" {
+  skip "Under construction"
+
+  local status
+  local result
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install Cj-bc/libtar 2>&1')" || status="$?"
+
+  [[ "$status" -eq 65 ]]
+  [[ "$result" =~ "couldn't clone repository: ".* ]]
+
+}
+
+
 @test "blib list" {
    eval 'run $BLIB list'
 
