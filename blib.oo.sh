@@ -62,7 +62,7 @@ class:blib() {
       url="$(Library url)"
       [ "$(Library version)" = "" ]&& local version="HEAD" || local version="$(Library version)"
       echo "Getting library [${url}]..."
-      git clone --depth 1 -b ${version} -- "${url}" "$(blib::options --prefix)/../Celler/${libname#*/}/${version}" \
+      git clone --depth 1 -b ${version} -- "${url}" "$(blib::options --prefix)/../Cellar/${libname#*/}/${version}" >/dev/null 2>&1 \
         || e="couldn't clone repository: ${url}" throw
       Library scripts forEach ' \
                                echo -n "Linking ${item}..."; \
