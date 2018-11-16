@@ -42,8 +42,9 @@ setup() {
 @test "blib install (invalid repo name)" {
   local result
   local status
-  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install nonexistnonexistnonexist 2>&1 >/dev/null')" || status="$?"
+  result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB install nonexistnonexistnonexist 2>&1')" || status="$?"
 
+  echo "$result" # DEBUG
   [[ "$status" -eq 65 ]] # EX_DATAERR
   [[ "$result" = 'libname should form <user>/<repo>' ]]
   [[ ! -d "${tmpdir}/libtar" ]]
@@ -126,6 +127,7 @@ setup() {
   [[ "$status" -eq 65 ]]
   [[ "$result" = "library libtar is not installed." ]]
 }
+
 
 teardown() {
   rm -rf "$tmpdir"
