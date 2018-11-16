@@ -86,8 +86,8 @@ class:blib() {
                                   || { echo "failed"; e="fail to link ${item}" throw;} \
                               '
     } catch {
-      Console::WriteStdErr "${__EXCEPTION__[1]}"
-      Console::WriteStdErr "please ask maintainer of this formula."
+      Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
+      Console::WriteStdErr "$(UI.Color.Red)please ask maintainer of this formula.$(UI.Color.Default)"
       e="fail to install" throw
       return
     }
