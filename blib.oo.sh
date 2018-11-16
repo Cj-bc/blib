@@ -66,7 +66,7 @@ class:blib() {
         || e="couldn't clone repository: ${url}" throw
       Library scripts forEach ' \
                                echo -n "Linking ${item}..."; \
-                               ln -s ${item} "$(blib  --prefix)/${libname#*/}/" \
+                               ln -s ${item} "$(blib::options --prefix)/${libname#*/}/" \
                                   && echo "" \
                                   || { echo "failed"; e="fail to link ${item}" throw;} \
                               '
