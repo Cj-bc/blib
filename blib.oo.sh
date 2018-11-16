@@ -11,6 +11,14 @@ source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-boot
 import util/class util/log util/trycatch util/exception UI/Console UI/Color
 import ../../libblib/user.oo.sh
 
+Logger::VOID() { :;}
+Log::RegisterLogger VOID Logger::VOID
+
+namespace blib
+Log::AddOutput blib/debug DEBUG
+Log::AddOutput blib/error ERROR
+
+
 
 class:blib() {
 
