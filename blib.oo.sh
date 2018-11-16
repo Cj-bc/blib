@@ -57,11 +57,17 @@ class:blib() {
 
     # get formula first
     echo "Getting formula [${libname}]..."
-    git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" > /dev/null 2>&1
-    if [ "$?" -ne 0 ]; then
+    local status; local git_clone_res # Logging
+    git_clone_res="$(git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" 2>&1)"\
+    || status=$?; subject="debug" Log "$git_clone_res" # Logging
+    unset git_clone_res # Logging
+
+    if [ "${status-0}" -ne 0 ]; then
+      unset status
       e="Fail to clone formula." throw
       return
     fi
+    unset status
 
     # install library itself
     try {
