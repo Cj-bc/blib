@@ -64,6 +64,7 @@ class:blib() {
       echo "Getting library [${url}]..."
       git clone --depth 1 -b ${version} -- "${url}" "$(blib::options --prefix)/../Cellar/${libname#*/}/${version}" >/dev/null 2>&1 \
         || e="couldn't clone repository: ${url}" throw
+      [ -d "$(blib::options --prefix)/${libname#*/}" ] || mkdir "$(blib::options --prefix)/${libname#*/}"
       Library scripts forEach ' \
                                echo -n "Linking ${item}..."; \
                                ln -s ${item} "$(blib::options --prefix)/${libname#*/}/" \
