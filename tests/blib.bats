@@ -33,8 +33,7 @@ setup() {
 
 
 @test "blib install" {
-  local status
-  eval 'BLIB_ROOT="${tmpdir}" $BLIB install Cj-bc/libtar' || status="$?"
+  eval 'BLIB_ROOT="${tmpdir}" $BLIB install Cj-bc/libtar'
 
   [[ "$?" -eq 0 ]]
   [[ -d "${tmpdir}/libtar" ]]
@@ -85,7 +84,6 @@ setup() {
   local result
   result="$(eval 'BLIB_ROOT=${tmpdir} $BLIB uninstall libtar 2>/dev/null' | tail -n 1)" || status="$?"
 
-  echo "result: '$result'"
   [[ "$status" -eq 0 ]]
   [[ "$result" = 'Done.' ]]
   [[ ! -d "${tmpdir}/libtar" ]]
