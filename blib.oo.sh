@@ -29,7 +29,7 @@ class:blib() {
   blib::install() {
     [string] libname
 
-    # throw exception if the libname is wrong.
+    # Check the library is safe to install
     try {
       [[ ! "$libname" =~ .*/.* ]] && e="libname should form <user>/<repo>" throw
       # 1. Does the same library already installed?
