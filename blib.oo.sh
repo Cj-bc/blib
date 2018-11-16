@@ -58,7 +58,7 @@ class:blib() {
     # get formula first
     echo "Getting formula [${libname}]..."
     local status; local git_clone_res # Logging
-    git_clone_res="$(git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" 2>&1)"\
+    git_clone_res="$(git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" 2>&1 >/dev/null)"\
     || status=$?; subject="debug" Log "$git_clone_res" # Logging
     unset git_clone_res # Logging
 
@@ -76,8 +76,19 @@ class:blib() {
       url="$(Library url)"
       [ "$(Library version)" = "" ]&& local version="HEAD" || local version="$(Library version)"
       echo "Getting library [${url}]..."
-      git clone --depth 1 -b ${version} -- "${url}" "$(blib::options --prefix)/../Cellar/${libname#*/}/${version}" >/dev/null 2>&1 \
-        || e="couldn't clone repository: ${url}" throw
+
+      local status; local git_clone_res # Logging
+      git_clone_res="$(git clone --depth 1 -b ${version} -- "${url}" "$(blib::options --prefix)/../Cellar/${libname#*/}/${version}" 2>&1 >/dev/null)"\
+      || status=$?; subject="debug" Log "$git_clone_res" # Logging
+      unset git_clone_res # Logging
+
+      if [ "${status-0}" -ne 0 ]; then
+        unset status
+        e="couldn't clone repository: ${url}" throw
+        return
+      fi
+      unset status
+
       [ -d "$(blib::options --prefix)/${libname#*/}" ] || mkdir "$(blib::options --prefix)/${libname#*/}"
       Library scripts forEach ' \
                                echo -n "Linking ${item}..."; \
