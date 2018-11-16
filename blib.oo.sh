@@ -58,8 +58,16 @@ class:blib() {
     # get formula first
     echo "Getting formula [${libname}]..."
     local status; local git_clone_res # Logging
-    git_clone_res="$(git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" 2>&1 >/dev/null)"\
-    || status=$?; subject="debug" Log "$git_clone_res" # Logging
+    if [[ -d "$(blib::options --prefix)/../formula/${libname#*/}" ]]; then
+      (
+        cd "$(blib::options --prefix)/../formula/${libname#*/}"
+        git_clone_res="$(git pull  2>&1 >/dev/null)" || status=$?
+        subject="debug" Log "$git_clone_res" # Logging
+      )
+    else
+      git_clone_res="$(git clone --depth 1 -- "https://github.com/${libname/\//\/blib-}.git" "$(blib::options --prefix)/../formula/${libname#*/}" 2>&1 >/dev/null)"\
+      || status=$?; subject="debug" Log "$git_clone_res" # Logging
+    fi
     unset git_clone_res # Logging
 
     if [ "${status-0}" -ne 0 ]; then
