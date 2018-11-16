@@ -75,6 +75,7 @@ class:blib() {
       Console::WriteStdErr "${__EXCEPTION__[1]}"
       Console::WriteStdErr "please ask maintainer of this formula."
       e="fail to install" throw
+      return
     }
     echo "Done."
 
