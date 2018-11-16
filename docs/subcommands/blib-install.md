@@ -18,7 +18,9 @@ work:
 this command fetch formula and execute install method.
 
 
-1. search formula repository using given name.
-2. clone the formula under `$(blib --prefix)/formula/`.
-4. install library into `$(blib --prefix)/Cellar/<library_name>/<version>/`
-5. link to `$(blib --prefix)/lib/<library_name>`
+1. check if formula exist. if exist, skip to 4
+2. search formula repository using given name.
+3. clone the formula under `$(blib --prefix)/formula/`.
+4. check if the version exist. If exist, skip to 6
+5. install library into `$(blib --prefix)/../Cellar/<library_name>/<version>/`
+6. link to `$(blib --prefix)/<library_name>`
