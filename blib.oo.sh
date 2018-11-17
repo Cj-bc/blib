@@ -86,7 +86,7 @@ class:blib() {
       # install library itself
       source "${libname#*/}.blib.formula"
       url="$(Library url)"
-      [[ "$(Library version)" = *':false' ]] && local version="HEAD" || local version="$(Library version)"
+      [[ "$(Library version)" = *':false' ]] && local version="master" || local version="$(Library version)"
       echo "Getting library [${url}]..."
 
       if [[ -d "$(blib::options --prefix)/../Cellar/${libname#*/}/${version}" ]]; then
