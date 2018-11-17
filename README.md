@@ -103,13 +103,13 @@ Repository  should be named as 'blib-<library_name>' (like homebrew)
 Example:
 ```
 class:Library() {
-  @required public string name="libhttp"
-  @required public string url="https://github.com/Cj-bc/libhttp.git"
-  @required public array scripts push "libhttp.sh"
-            public array tests push "tests"
-            public string version="v1.2.3"
-            public string description="use HTTP method easier"
-            public array dependencies=( "libhttp" )
+  @required public string name = "libhttp"
+  @required public string url = "https://github.com/Cj-bc/libhttp.git"
+  @required public array  scripts push "libhttp.sh"
+            public array  tests push "tests"
+            public string version = "v1.2.3"
+            public string description = "use HTTP method easier"
+            public array  dependencies push "libhttp"
 
   Library.test() {
     make test
