@@ -4,11 +4,11 @@
 # This software is released under MIT License
 #
 
-class:Blib::Formula() {
+class:Blib_Formula() {
 
   # validate formula format
   # @param <string path_to_formula>
-  Blib::Formula::validateFormula() {
+  Blib_Formula::validateFormula() {
     [string] formula
 
     [[ -f "$formula" ]] || @return:val 65
@@ -24,4 +24,4 @@ class:Blib::Formula() {
 
 }
 
-Type::InitializeStatic Blib::Formula
+Type::InitializeStatic Blib_Formula
