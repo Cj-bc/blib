@@ -181,14 +181,14 @@ function main() {
     esac
   } catch {
     Console::WriteStdErr "$(UI.Color.Red)${__EXCEPTION__[1]}$(UI.Color.Default)"
-    @return:val 65
+    return 65
   }
-  @return:val 0
+  return 0
 }
 
 try {
   main $@
-  e="$?" throw
+  e="$status" throw
 } catch {
-  exit ${__EXCEPTION__[1]}
+  exit ${__EXCEPTION__[1]#return }
 }
