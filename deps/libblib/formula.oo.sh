@@ -12,17 +12,19 @@ class:Blib_Formula() {
   Blib_Formula::validateFormula() {
     [string] formula
 
-    [[ -f "$formula" ]] || @return:val 65
+    [[ -f "$formula" ]] || return 65
     source $formula
 
-    Library >/dev/null 2>&1 || @return:val 65
-    [[ ! -z "$(Library url)" ]] || @return:val 65
-    [[ ! -z "$(Library name)" ]] || @return:val 65
-    [[ ! -z "$(Library scripts get 0)" ]] || @return:val 65
-    @return:val 0
+    try {
+      Library >/dev/null
+      Library url >/dev/null
+      Library name >/dev/null
+      Library scripts >/dev/null
+    } catch {
+      return 65
+    }
+    return 0
   }
-
-
 }
 
 Type::InitializeStatic Blib_Formula
