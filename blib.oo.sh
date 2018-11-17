@@ -188,7 +188,7 @@ function main() {
 
 try {
   main $@
-  e="$status" throw
+  e="$?" throw
 } catch {
   exit ${__EXCEPTION__[1]#return }
 }
