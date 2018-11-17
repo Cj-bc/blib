@@ -12,16 +12,16 @@ class:Blib_Formula() {
   Blib_Formula::validateFormula() {
     [string] formula
 
-    [[ -f "$formula" ]] || return 65
+    [[ -f "$formula" ]] || e="File not exist" throw
     source $formula
 
     try {
-      Library >/dev/null
-      Library url >/dev/null
-      Library name >/dev/null
-      Library scripts >/dev/null
+      Library >/dev/null || e="Library" throw
+      Library url >/dev/null || e="url" throw
+      Library name >/dev/null || e="name" throw
+      Library scripts >/dev/null || e="script" throw
     } catch {
-      return 65
+      e="not found [${__EXCEPTION__[1]}]" throw
     }
     return 0
   }
