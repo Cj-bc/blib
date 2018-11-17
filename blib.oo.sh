@@ -81,10 +81,10 @@ class:blib() {
     try {
       cd "$(blib::options --prefix)/../formula/${libname#*/}"
       # validate formula
-      Blib_Formula::validateFormula "${libname#*/}.formula" || e="Unvalid formula" throw
+      Blib_Formula::validateFormula "${libname#*/}.blib.formula" || e="Unvalid formula" throw
 
       # install library itself
-      source "${libname#*/}.formula"
+      source "${libname#*/}.blib.formula"
       url="$(Library url)"
       [ "$(Library version)" = "" ]&& local version="HEAD" || local version="$(Library version)"
       echo "Getting library [${url}]..."

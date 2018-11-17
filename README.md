@@ -95,7 +95,7 @@ It should be hosted on Github (for now).
 
 ## make formula
 
-The formula should be named as '<library_name>.formula'
+The formula should be named as '<library_name>.blib.formula'
 Repository  should be named as 'blib-<library_name>' (like homebrew)
 
 ### form of formula
