@@ -9,7 +9,7 @@
 
 source "$( cd "${BASH_SOURCE[0]%/*}" && pwd )/deps/bash-oo-framework/lib/oo-bootstrap.sh"
 import util/class util/log util/trycatch util/exception UI/Console UI/Color
-import ../../libblib/user.oo.sh
+import ../../libblib/user.oo.sh ../../libblib/formula.oo.sh
 
 Logger::VOID() { :;}
 Log::RegisterLogger VOID Logger::VOID
@@ -77,9 +77,13 @@ class:blib() {
     fi
     unset status
 
-    # install library itself
+
     try {
       cd "$(blib::options --prefix)/../formula/${libname#*/}"
+      # validate formula
+      Blib_Formula::validateFormula "${libname#*/}.formula" || e="Unvalid formula" throw
+
+      # install library itself
       source "${libname#*/}.formula"
       url="$(Library url)"
       [ "$(Library version)" = "" ]&& local version="HEAD" || local version="$(Library version)"
