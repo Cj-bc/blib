@@ -105,6 +105,9 @@ class:blib() {
         unset status
       fi
 
+      # pop into cloned repo
+      cd "$(blib::options --prefix)/../Cellar/${libname#*/}/${version}"
+
       [ -d "$(blib::options --prefix)/${libname#*/}" ] || mkdir "$(blib::options --prefix)/${libname#*/}"
       Library scripts forEach ' \
                                echo -n "Linking $(realpath ${item})..."; \
