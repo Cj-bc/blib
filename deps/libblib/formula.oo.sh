@@ -16,7 +16,7 @@ class:Blib_Formula() {
     source $formula
 
     try {
-      Library >/dev/null || e="Library" throw
+      try Library >/dev/null; catch e="Library" throw
       Library url >/dev/null || e="url" throw
       Library name >/dev/null || e="name" throw
       Library scripts >/dev/null || e="script" throw
