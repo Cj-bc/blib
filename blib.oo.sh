@@ -107,8 +107,8 @@ class:blib() {
 
       [ -d "$(blib::options --prefix)/${libname#*/}" ] || mkdir "$(blib::options --prefix)/${libname#*/}"
       Library scripts forEach ' \
-                               echo -n "Linking ${item}..."; \
-                               ln -s ${item} "$(blib::options --prefix)/${libname#*/}/" \
+                               echo -n "Linking $(realpath ${item})..."; \
+                               ln -s $(realpath ${item}) "$(blib::options --prefix)/${libname#*/}/" \
                                   && echo "" \
                                   || { echo "failed"; e="fail to link ${item}" throw;} \
                               '
