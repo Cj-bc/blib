@@ -4,7 +4,7 @@
 # This software is released under MIT License
 #
 
-source "$(blib --prefix)/bash-oo-framework/lib/oo-bootstrap.sh"
+source "$(cd "${BASH_SOURCE[0]%/*}" && pwd)/../../bash-oo-framework/lib/oo-bootstrap.sh"
 import util/test UI/Color util/tryCatch util/log util/exception
 import ../../libblib/user.oo.sh
 
