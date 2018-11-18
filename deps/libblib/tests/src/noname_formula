@@ -1,0 +1,6 @@
+class:Library() {
+  @required @public string url = "example.com"
+  @required @public array  push "script.sh"
+}
+
+Type::InitializeStatic Library

@@ -1,0 +1,6 @@
+class:Library() {
+  @required @public string name = "name"
+  @required @public string url = "example.com"
+}
+
+Type::InitializeStatic Library
