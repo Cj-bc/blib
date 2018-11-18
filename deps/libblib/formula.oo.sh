@@ -9,7 +9,7 @@ class:Blib_Formula() {
 
   # validate formula format
   # @param <string path_to_formula>
-  Blib_Formula::validateFormula() {
+  Blib_Formula::validateFormula() (
     [string] formula
 
     [[ -f "$formula" ]] || e="File not exist" throw
@@ -24,7 +24,7 @@ class:Blib_Formula() {
       e="not found [${__EXCEPTION__[1]}]" throw
     }
     return 0
-  }
+  )
 }
 
 Type::InitializeStatic Blib_Formula
