@@ -17,9 +17,9 @@ class:Blib_Formula() {
 
     try {
       try Library >/dev/null; catch e="Library" throw
-      Library url >/dev/null || e="url" throw
-      Library name >/dev/null || e="name" throw
-      Library scripts >/dev/null || e="script" throw
+      try Library url >/dev/null; catch e="url" throw
+      try Library name >/dev/null; catch e="name" throw
+      try Library scripts >/dev/null; catch e="scripts" throw
     } catch {
       e="not found [${__EXCEPTION__[1]}]" throw
       return 65
