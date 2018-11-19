@@ -12,7 +12,7 @@ class:Blib_Formula() {
   Blib_Formula::validateFormula() (
     [string] formula
 
-    [[ -f "$formula" ]] || e="File not exist" throw
+    [[ -f "$formula" ]] || { e="File not exist" throw; return 65; }
     source $formula
 
     try {
