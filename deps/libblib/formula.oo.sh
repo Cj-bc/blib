@@ -22,6 +22,7 @@ class:Blib_Formula() {
       Library scripts >/dev/null || e="script" throw
     } catch {
       e="not found [${__EXCEPTION__[1]}]" throw
+      return 65
     }
     return 0
   )
