@@ -1,6 +1,6 @@
 class:Library() {
-  @required @public string name = "name"
-  @required @public array  push "script.sh"
+  @required public string name = "name"
+  @required public array  push "script.sh"
 }
 
 Type::InitializeStatic Library
