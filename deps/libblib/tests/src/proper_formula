@@ -1,7 +1,7 @@
 class:Library() {
   @required public string name = "name"
   @required public string url = "example.com"
-  @required public array  push "script.sh"
+  @required public array  scripts push "script.sh" "another.sh"
 }
 
 Type::InitializeStatic Library
