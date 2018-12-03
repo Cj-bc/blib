@@ -127,6 +127,7 @@ class:blib() {
   }
 
   # uninstall given library.
+  # this don't remove Cellar entries. Use `blib::clean` for that.
   # @param <string libname>
   blib::uninstall() {
     [string] libname
