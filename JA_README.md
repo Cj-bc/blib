@@ -90,3 +90,59 @@ source "$(blib --prefix)/bash-oo-framework/lib/oo-bootstrap.sh"
 source "$(blib --prefix)/path/to/the/script"
 ```
 
+# ライブラリをblibに対応させる
+
+ライブラリをblibに対応させたい場合、formula用のレポジトリを作成する必要があります。
+(この方法をとることで、他の人のライブラリを対応させることができます)
+現状、githubでホストされている必要があります。
+
+## formulaの作成
+
+formulaとそのレポジトリは以下のように名付けてください
+
+```markdown
+formula: <library_name>.blib.formula
+レポジトリ: blib-<library_name>
+```
+
+### formulaのフォーマット
+
+Example:
+```
+class:Library() {
+  @required public string name = "libhttp"
+  @required public string url = "https://github.com/Cj-bc/libhttp.git"
+  @required public array  scripts push "libhttp.sh"
+            public array  tests push "tests"
+            public string version = "v1.2.3"
+            public string description = "use HTTP method easier"
+            public array  dependencies push "libhttp"
+
+  Library.test() {
+    make test
+  }
+}
+
+Type::InitializeStatic Library
+```
+
+他の人のライブラリ用のformulaを考慮して、testは必須のものではありません。
+
+#### properties
+
+|properties    | description                                                                          | is needed? |
+|:-:           |:-:                                                                                   |:-:         |
+| name         |  レポジトリ(ライブラリ)の名前                                                        | O          |
+| url          | ライブラリのURL                                                                      | O          |
+| scripts      | スクリプトとして存在すべきものたち(package.jsonの`scripts`のようなもの)              | O          |
+| tests        | テストスクリプト。 `bats`もしくは`bash-oo-framework`のテストを使うと良いと思います。 | X          |
+| dependencies | 依存するライブラリ。配列。 未実装                                                    | X          |
+| description  | ライブラリの説明                                                                     | X          |
+| version      | インストールするバージョン。空の場合、`HEAD`が使われます                             | X          |
+
+#### methods
+
+|methods          | description                                 | is needed? |
+|:-:              |:-:                                          |:-:         |
+| Library.test    | ライブラリのテストをする際に実行されます    | X          |
+
