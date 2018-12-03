@@ -78,7 +78,7 @@ English: [README.md]
 
 
 ```bash
-source "$(blib --prefix)/bash-oo- framework/lib/oo-bootstrap.sh"
+source "$(blib --prefix)/bash-oo-framework/lib/oo-bootstrap.sh"
 ```
 
 これにより、`import`コマンドを用いてライブラリを使用できるようになります。  
