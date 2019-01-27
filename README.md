@@ -1,6 +1,9 @@
 日本語: [JA_README.md]
 
 # blib
+
+[![Join the chat at https://gitter.im/Cj-bc-blib/community](https://badges.gitter.im/Cj-bc-blib/community.svg)](https://gitter.im/Cj-bc-blib/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
   a library manager for bash script.
   Not a Package Manager. ( package manager for bash is here,[bpkg/bpkg](https://github.com/bpkg/bpkg))
 
